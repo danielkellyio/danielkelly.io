@@ -1,14 +1,15 @@
 <template>
   <div>
-    <dk-header />
-    <div class="container flex">
+    <div class="home-wrapper flex">
       <video ref="video" class="object-cover" src=""></video>
       <div class="relative z-10">
-        <h1 :class="{ active: h1Active, dark: h1Dark }">Daniel Kelly</h1>
-        <h2 :class="{ active: h2Active }">dad, dev, vue enthusiast</h2>
+        <h1 class="unique" :class="{ active: h1Active, dark: h1Dark }">
+          {{ h1 }}
+        </h1>
+        <h2 :class="{ active: h2Active }">{{ h2 }}</h2>
         <div class="heading-copy">
-          <h1 :class="{ active: h1Active }">Daniel Kelly</h1>
-          <h2 :class="{ active: h2Active }">dad, dev, vue enthusiast</h2>
+          <h1 :class="{ active: h1Active }">{{ h1 }}</h1>
+          <h2 :class="{ active: h2Active }">{{ h2 }}</h2>
         </div>
       </div>
     </div>
@@ -23,6 +24,8 @@ export default {
       h1Active: false,
       h1Dark: false,
       h2Active: false,
+      h1: 'Daniel Kelly',
+      h2: 'dad, dev, dabbler',
     }
   },
   mounted() {
@@ -40,21 +43,16 @@ export default {
 }
 </script>
 
-<style>
-:root {
-  --blue: #0d73e0;
-  --pink: #ff2bd4;
-}
+<style scoped>
 html {
-  font-family: 'Work Sans', sans-serif;
   overflow: hidden;
 }
 
-.container {
+.home-wrapper {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
   align-items: center;
+  max-width: 1280px;
 }
 video {
   position: absolute;
@@ -69,6 +67,7 @@ h2 {
   transition: 5s ease all;
   opacity: 0.5;
   color: white;
+  border: none !important;
 }
 h1 {
   font-size: 8rem;
@@ -126,7 +125,7 @@ h2.active {
 }
 
 @media (max-width: 1032px) {
-  .container {
+  .home-wrapper {
     justify-content: center;
     text-align: center;
   }

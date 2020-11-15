@@ -1,13 +1,18 @@
 <template>
   <div>
+    <dk-header />
     <Nuxt />
   </div>
 </template>
 
 <style>
+:root {
+  --blue: #0d73e0;
+  --pink: #ff2bd4;
+}
+
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -17,39 +22,64 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  @apply p-10;
+  @apply mb-16;
+}
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
 }
+h1:not(.unique) {
+  font-size: 2rem;
+  border-bottom: 1px solid var(--pink);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-right: 425px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/header.jpg');
+    z-index: -1;
+    background-position: bottom right;
+    width: 410px;
+    background-size: 410px;
+    background-repeat: no-repeat;
+  }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+  @media (max-width: 768px) {
+    text-align: center;
+    padding-right: 0;
+    padding-top: 50px;
+    &::before {
+      top: -40px;
+      right: 50%;
+      bottom: auto;
+      transform: rotate(180deg) translateX(-50%);
+      height: 80px;
+      width: 110vw;
+      background-size: cover;
+      background-position: top;
+    }
+  }
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+p a {
+  color: var(--blue) !important;
+  text-decoration: underline;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.prose {
+  max-width: none;
 }
 </style>

@@ -51,7 +51,7 @@ export default {
   build: {},
   fontawesome: {
     icons: {
-      solid: ['faNewspaper'],
+      solid: ['faNewspaper', 'faHome'],
       brands: ['faGithub', 'faTwitter'],
     },
   },

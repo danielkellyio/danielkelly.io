@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center bg-gray-200 p-4 absolute bottom-0 w-full z-10 opacity-75 justify-center md:justify-between"
+    class="flex items-center bg-gray-200 p-4 fixed bottom-0 w-full z-10 opacity-75 justify-center md:justify-between"
   >
     <div class="left"></div>
     <nav class="right">
@@ -9,7 +9,7 @@
           <component
             :is="link.attrs.to ? 'router-link' : 'a'"
             v-bind="link.attrs"
-            class="p-3"
+            class="p-3 nav-item"
           >
             <font-awesome-icon v-if="link.icon" :icon="link.icon" size="lg" />
             <span v-if="link.label"></span>
@@ -26,6 +26,12 @@ export default {
     return {
       links: [
         {
+          icon: ['fas', 'home'],
+          attrs: {
+            to: '/',
+          },
+        },
+        {
           icon: ['fab', 'github'],
           attrs: {
             target: '_blank',
@@ -39,12 +45,12 @@ export default {
             href: 'https://twitter.com/danielkelly_io',
           },
         },
-        // {
-        //   icon: ['fas', 'newspaper'],
-        //   attrs: {
-        //     to: '/posts',
-        //   },
-        // },
+        {
+          icon: ['fas', 'newspaper'],
+          attrs: {
+            to: '/blog',
+          },
+        },
       ],
     }
   },
@@ -57,10 +63,10 @@ li svg {
 a {
   transition: 0.3s ease color;
 }
-li:nth-of-type(1) a:hover {
+li:nth-of-type(even) a:hover {
   color: var(--pink);
 }
-li:nth-of-type(2) a:hover {
+li:nth-of-type(odd) a:hover {
   color: var(--blue);
 }
 </style>
