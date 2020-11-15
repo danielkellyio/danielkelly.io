@@ -1,15 +1,42 @@
 <template>
   <div>
     <div class="home-wrapper flex">
-      <video ref="video" class="object-cover" src=""></video>
+      <video
+        ref="video"
+        class="object-cover"
+        src=""
+        :class="{ 'opacity-0': videoHidden }"
+      ></video>
       <div class="relative z-10">
-        <h1 class="unique" :class="{ active: h1Active, dark: h1Dark }">
+        <h1
+          class="unique relative"
+          :class="{
+            active: h1Active,
+            dark: h1Dark,
+            'with-feature': featureActive,
+          }"
+        >
+          <img
+            class="feature absolute"
+            src="/ink-2.jpg"
+            :class="{ active: featureActive }"
+          />
           {{ h1 }}
         </h1>
         <h2 :class="{ active: h2Active }">{{ h2 }}</h2>
         <div class="heading-copy">
           <h1 :class="{ active: h1Active }">{{ h1 }}</h1>
           <h2 :class="{ active: h2Active }">{{ h2 }}</h2>
+        </div>
+        <div
+          class="brands flex"
+          :class="{ active: brandsActive }"
+          style="font-size: 4rem"
+        >
+          <brand-icon brand="vue" />
+          <brand-icon brand="laravel" />
+          <brand-icon brand="nuxt" />
+          <brand-icon brand="git" />
         </div>
       </div>
     </div>
@@ -24,6 +51,9 @@ export default {
       h1Active: false,
       h1Dark: false,
       h2Active: false,
+      brandsActive: false,
+      videoHidden: false,
+      featureActive: false,
       h1: 'Daniel Kelly',
       h2: 'dad, dev, dabbler',
     }
@@ -36,8 +66,11 @@ export default {
     video.addEventListener('loadstart', () => {
       wait(() => (video.playbackRate = 2.5), 1500)
       wait(() => (this.h1Active = true), 3000)
-      wait(() => (this.h1Dark = true), 7000)
-      wait(() => (this.h2Active = true), 10000)
+      wait(() => (this.h1Dark = true), 5000)
+      wait(() => (this.brandsActive = true), 5000)
+      wait(() => (this.h2Active = true), 5500)
+      wait(() => (this.videoHidden = true), 5000)
+      wait(() => (this.featureActive = true), 6000)
     })
   },
 }
@@ -53,6 +86,9 @@ html {
   min-height: 100vh;
   align-items: center;
   max-width: 1280px;
+  @media (max-width: 1280px) {
+    max-width: 900px;
+  }
 }
 video {
   position: absolute;
@@ -61,6 +97,7 @@ video {
   right: 0;
   bottom: 0;
   min-height: 100vh;
+  transition: 2s ease all;
 }
 h1,
 h2 {
@@ -132,6 +169,9 @@ h2.active {
   h1 {
     font-size: 4rem;
     line-height: 1;
+    &.with-feature {
+      padding-top: 200px;
+    }
   }
   h2 {
     margin-top: 20px;
@@ -155,6 +195,39 @@ h2.active {
     margin-top: 0;
     padding: 10px;
     font-size: 1.7rem;
+  }
+}
+.brands {
+  overflow: hidden;
+  will-change: auto;
+  transition: 2s ease height;
+  height: 0;
+  &.active {
+    height: 200px;
+  }
+  @media (max-width: 1032px) {
+    justify-content: center;
+  }
+}
+.feature {
+  opacity: 0;
+  transition: 2s ease;
+  height: 530px;
+  z-index: -1;
+  left: -120px;
+  top: -110px;
+  &.active {
+    opacity: 0.2;
+  }
+  @media (max-width: 1032px) {
+    transition: 0.5s ease;
+    top: -20px;
+    left: 50%;
+    height: 200px;
+    transform: translateX(-50%);
+    &.active {
+      opacity: 1;
+    }
   }
 }
 </style>
