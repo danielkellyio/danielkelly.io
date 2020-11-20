@@ -1,10 +1,13 @@
 <template>
-  <div>
+  <div class="h-full overflow-y-hidden">
     <div class="home-wrapper flex">
       <video
         ref="video"
         class="object-cover"
-        src=""
+        src="https://videos.danielkelly.io/dkio-video-bg.mp4"
+        autoplay
+        muted
+        playsinline
         :class="{ 'opacity-0': videoHidden }"
       ></video>
       <div class="relative z-10">
@@ -17,11 +20,18 @@
           }"
         >
           <img
-            class="feature absolute"
+            class="feature absolute lg:hidden"
             src="/ink-2.jpg"
             :class="{ active: featureActive }"
           />
-          {{ h1 }}
+          <img
+            class="feature absolute hidden lg:block"
+            src="/ink-2-desktop.jpg"
+            :class="{ active: featureActive }"
+          />
+          <span class="z-10 inline-block">
+            {{ h1 }}
+          </span>
         </h1>
         <h2 :class="{ active: h2Active }">{{ h2 }}</h2>
         <div class="heading-copy">
@@ -60,17 +70,15 @@ export default {
   },
   mounted() {
     const video = this.$refs.video
-    video.src = 'https://videos.danielkelly.io/dkio-video-bg.mp4'
     video.playbackRate = 2.0
-    video.setAttribute('autoplay', true)
     video.addEventListener('loadstart', () => {
       wait(() => (video.playbackRate = 2.5), 1500)
-      wait(() => (this.h1Active = true), 3000)
-      wait(() => (this.h1Dark = true), 5000)
-      wait(() => (this.brandsActive = true), 5000)
-      wait(() => (this.h2Active = true), 5500)
-      wait(() => (this.videoHidden = true), 5000)
-      wait(() => (this.featureActive = true), 6000)
+      wait(() => (this.h1Active = true), 2500)
+      wait(() => (this.h1Dark = true), 4500)
+      wait(() => (this.brandsActive = true), 4500)
+      wait(() => (this.h2Active = true), 5000)
+      wait(() => (this.videoHidden = true), 4000)
+      wait(() => (this.featureActive = true), 5000)
     })
   },
 }
@@ -101,14 +109,20 @@ video {
 }
 h1,
 h2 {
-  transition: 5s ease all;
+  transition: 3s ease all;
   opacity: 0.5;
   color: white;
   border: none !important;
 }
+h2 {
+  transition: 2s ease color, background;
+}
 h1 {
   font-size: 8rem;
   font-weight: 900;
+  span {
+    mix-blend-mode: hard-light;
+  }
 }
 h2 {
   font-size: 3rem;
@@ -118,8 +132,7 @@ h2 {
 h1.active,
 h2.active {
   opacity: 1;
-  text-shadow: 0 0 20px white;
-  color: #c2d6d7;
+  text-shadow: 0 0 20px white, 1px 1px 5px white, -1px -1px 5px white;
 }
 h1.dark,
 h2.active {
@@ -131,6 +144,11 @@ h2.active {
   opacity: 0.8;
   color: var(--pink);
   transform: translateY(-1.5rem);
+  background: white;
+  padding: 5px 30px;
+  border-radius: 35px;
+  line-height: 1;
+  display: inline-block;
 }
 
 .heading-copy {
@@ -172,18 +190,21 @@ h2.active {
     &.with-feature {
       padding-top: 200px;
     }
+    span {
+      mix-blend-mode: unset !important;
+    }
   }
   h2 {
     margin-top: 20px;
     font-size: 2rem;
   }
-  video {
+  /*video {
     top: 0;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     min-height: 100vh;
-  }
+  } */
 }
 
 @media (max-width: 401px) {
@@ -195,6 +216,9 @@ h2.active {
     margin-top: 0;
     padding: 10px;
     font-size: 1.7rem;
+    &.active {
+      margin-top: 20px;
+    }
   }
 }
 .brands {
@@ -212,20 +236,22 @@ h2.active {
 .feature {
   opacity: 0;
   transition: 2s ease;
-  height: 530px;
+  height: 700px;
   z-index: -1;
   left: -120px;
-  top: -110px;
+  top: -200px;
+  max-width: none;
   &.active {
-    opacity: 0.2;
+    opacity: 1;
   }
   @media (max-width: 1032px) {
-    transition: 0.5s ease;
-    top: -20px;
+    transition: 1s ease;
+    top: -220px;
     left: 50%;
     height: 200px;
     transform: translateX(-50%);
     &.active {
+      top: -20px;
       opacity: 1;
     }
   }
