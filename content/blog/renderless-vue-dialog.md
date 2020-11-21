@@ -41,6 +41,8 @@ console.log(value) // the result of the prompt
 
 I hope these look familiar. They look just like the native functions but are methods of a `dialog` object and must be `await`ed.
 
+<demo-widget :slug="slug"></demo-widget>
+
 ## Why Renderless?
 Renderless means our code doesn't concern itself with how the "dialog" is actually rendered. The benefit here is that we can reuse our dialog object over and over in any Vue project no matter what component library (if any) we are using. The dialog object doesn't care what the dialog actually looks like: where it's positioned, what the button size is, etc, or if you use Bulma, Boostrap, or Tailwind.
 

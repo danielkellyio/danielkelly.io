@@ -2,6 +2,7 @@
   <div>
     <dk-header />
     <Nuxt />
+    <Dialog />
   </div>
 </template>
 

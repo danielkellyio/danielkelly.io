@@ -48,7 +48,12 @@ export default {
   content: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    extend(config, ctx) {
+      config.node = config.node || {}
+      config.node.fs = 'empty'
+    },
+  },
   fontawesome: {
     icons: {
       solid: ['faNewspaper', 'faHome'],
