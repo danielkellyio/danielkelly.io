@@ -388,4 +388,4 @@ export default {
 <demo-widget :slug="slug"></demo-widget>
 
 ## Conclusion
-There you have it, A flexible, customizable, potentially pretty, and functional replacement for `alert()`, `prompt()`, and `confirm()` in Vue. Check out the [git repo](https://github.com/danielkellyio/renderless-dialog) to see the full codebase and if you use the dialog object to render your own alerts, prompts, and confirms, hit me up on twitter [@danielkelly_io](https://twitter.com/danielkelly_io) so I can see the awesome stuff you've made!
+There you have it, A flexible, customizable, potentially pretty, and functional replacement for `alert()`, `prompt()`, and `confirm()` in Vue. Check out the [git repo](https://github.com/danielkellyio/renderless-dialog) to see the full codebase and unit tests. If you use the dialog object to render your own alerts, prompts, and confirms, hit me up on twitter [@danielkelly_io](https://twitter.com/danielkelly_io) so I can see the awesome stuff you've made!
