@@ -5,6 +5,8 @@ github: https://github.com/danielkellyio/renderless-dialog
 ---
 
 ## What We're Making
+[Jump to Demo](#demo)
+
 Javascript has a few handy functions used to interrupt the users workflow and warn them of something or get feedback from them. Those functions are `alert()`, `prompt()`, and `confirm()`. While these functions are very easy to use they come with a few drawbacks:
 1. They cannot be styled
 2. They look different across different browsers
@@ -41,7 +43,7 @@ console.log(value) // the result of the prompt
 
 I hope these look familiar. They look just like the native functions but are methods of a `dialog` object and must be `await`ed.
 
-<demo-widget :slug="slug"></demo-widget>
+
 
 ## Why Renderless?
 Renderless means our code doesn't concern itself with how the "dialog" is actually rendered. The benefit here is that we can reuse our dialog object over and over in any Vue project no matter what component library (if any) we are using. The dialog object doesn't care what the dialog actually looks like: where it's positioned, what the button size is, etc, or if you use Bulma, Boostrap, or Tailwind.
@@ -273,62 +275,103 @@ const confirmed = await dialog
 ```
 
 ## Putting it to Use
-Ultimately, even though our dialog is renderless, it is useless unless we actually render it. Here is an example of rendering the dialog as a Vue component. It's a simple matter of showing/hiding particular elements based on the dialog state and using the dialog methods to cancel and confirm. I just used some super simple html and css here but you could easily use a vue component library instead.
+Ultimately, even though our dialog is renderless, it is useless unless we actually render it. Here is an example of rendering the dialog as a Vue component. It's a simple matter of showing/hiding particular elements based on the dialog state and using the dialog methods to cancel and confirm. The code below is exactly what powers the dialogs on this site.
 ```vue
 <template>
-  <div v-if="dialog.state.active">
-    <div class="dialog-inner">
-      <h3 v-if="dialog.state.title">{{dialog.state.title}}</h3>
+  <transition name="dialog">
+    <div v-if="dialog.state.active" class="dialog">
+      <div class="dialog-inner rounded shadow">
+        <h3 v-if="dialog.state.title" class="text-xl mb-2">
+          {{ dialog.state.title }}
+          <hr />
+        </h3>
 
-      <p v-if="dialog.state.html" v-html="dialog.state.message"></p>
-      <p v-else>{{ dialog.state.message }}</p>
+        <p v-if="dialog.state.html" v-html="dialog.state.message"></p>
+        <p v-else>{{ dialog.state.message }}</p>
 
-      <input v-if="dialog.state.type === 'prompt'" :type="dialog.state.inputType" v-model="userInput">
+        <input
+          v-if="dialog.state.type === 'prompt'"
+          v-model="userInput"
+          :type="dialog.state.inputType"
+        />
 
-      <div>
-        <button v-if="dialog.state.type !== 'alert'" @click="dialog.cancel()">{{dialog.state.cancelText}}</button>
-        <button @click="dialog.ok(userInput)">{{dialog.state.okText}}</button>
+        <div class="flex justify-end mt-2">
+          <dk-button
+            v-if="dialog.state.type !== 'alert'"
+            class="bg-gray-400 text-gray-900 mr-3"
+            @click="dialog.cancel()"
+          >
+            {{ dialog.state.cancelText }}
+          </dk-button>
+          <dk-button @click="dialog.ok(userInput)">{{
+            dialog.state.okText
+          }}</dk-button>
+        </div>
       </div>
-
+      <div class="dialog-bg" @click="dialog.cancel()"></div>
     </div>
-    <div class="dialog-bg"></div>
-  </div>
+  </transition>
 </template>
 
 <script>
-import dialog from '@/dialog'
-export default{
-  data(){
+import dialog from '~/support/dialog'
+export default {
+  data() {
     return {
       userInput: '',
-      dialog
+      dialog,
     }
   },
 }
 </script>
 
 <style>
-.dialog-bg{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background:rgba(0,0,0,.5);
+.dialog {
+  transition: 0.3s ease all;
 }
-.dialog-inner{
-  background:white;
+.dialog-enter .dialog-bg {
+  opacity: 0;
+}
+
+.dialog-leave-active .dialog-bg {
+  opacity: 0;
+}
+
+.dialog-enter .dialog-inner,
+.dialog-leave-active .dialog-inner {
+  opacity: 0;
+  transform: translateY(-50px) translateX(-50%);
+}
+.dialog-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+.dialog-inner {
+  will-change: contents;
+  transform-origin: center;
+  transition: all 0.3s ease-out;
+  background: white;
   z-index: 2;
-  padding:20px;
-  position:fixed;
-  top:200px;
+  padding: 20px;
+  position: fixed;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
-  min-width:200px;
+  min-width: 400px;
+  opacity: 1;
 }
 </style>
 
 ```
 
+## Demo
+<demo-widget :slug="slug"></demo-widget>
 
+## Conclusion
 There you have it, A flexible, customizable, potentially pretty, and functional replacement for `alert()`, `prompt()`, and `confirm()` in Vue. Check out the [git repo](https://github.com/danielkellyio/renderless-dialog) to see the full codebase and if you use the dialog object to render your own alerts, prompts, and confirms, hit me up on twitter [@danielkelly_io](https://twitter.com/danielkelly_io) so I can see the awesome stuff you've made!
