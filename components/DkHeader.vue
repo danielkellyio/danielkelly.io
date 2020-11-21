@@ -45,12 +45,12 @@ export default {
             href: 'https://twitter.com/danielkelly_io',
           },
         },
-        // {
-        //   icon: ['fas', 'newspaper'],
-        //   attrs: {
-        //     to: '/blog',
-        //   },
-        // },
+        {
+          icon: ['fas', 'newspaper'],
+          attrs: {
+            to: '/blog',
+          },
+        },
       ],
     }
   },
