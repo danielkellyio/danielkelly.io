@@ -12,6 +12,10 @@
     </div>
 
     <nuxt-content :document="page" class="prose" />
+
+    <div class="flex justify-center mt-16">
+      <img src="/ink-2.jpg" alt="ink blob" width="100" />
+    </div>
   </div>
 </template>
 <script>

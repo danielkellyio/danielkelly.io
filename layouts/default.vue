@@ -82,4 +82,27 @@ p a {
 .prose {
   max-width: none;
 }
+
+h2,
+h3 {
+  position: relative;
+}
+h2 a,
+h3 a {
+  position: absolute;
+  background-image: url('/hashtag.webp');
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: 0.3s ease all;
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+}
+h2:hover a,
+h3:hover a {
+  opacity: 0.5;
+}
 </style>
