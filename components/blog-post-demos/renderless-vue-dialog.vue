@@ -1,15 +1,31 @@
 <template>
-  <div class="md:flex justify-between">
-    <div class="mb-4 text-center">
+  <div class="">
+    <div class="mb-4">
+      <pre>
+await dialog.html().alert('This alert has &lt;strong&gt;rich text&lt;/strong&gt;')</pre
+      >
       <dk-button @click="alert()">Alert</dk-button>
     </div>
 
-    <div class="mb-4 text-center">
+    <div class="mb-4">
+      <pre>
+this.answer = await dialog
+.title('Pet Survey')
+.okText('Of course!')
+.cancelText('Nope')
+.prompt('Do you like dogs?')
+      </pre>
       <dk-button @click="prompt()">Prompt</dk-button>
       <div class="mt-2">Answer: {{ answer }}</div>
     </div>
 
-    <div class="mb-4 text-center">
+    <div class="mb-4">
+      <pre>
+this.confirmed = await dialog
+.okText('Yes')
+.cancelText('No')
+.confirm('Are you sure?')
+      </pre>
       <dk-button @click="confirm()">Confirm</dk-button>
       <div class="mt-2">Confirmed: {{ confirmed ? 'Yes' : 'No' }}</div>
     </div>

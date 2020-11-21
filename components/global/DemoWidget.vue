@@ -4,12 +4,13 @@
     <div class="flex justify-between align-middle px-4 md:px-8">
       <strong class="text-lg">Demo</strong>
       <div>
-        <span
-          class="p-3 cursor-pointer"
-          :class="{ active: mode === 'output' }"
-          @click="mode = 'output'"
-          >Output</span
-        >
+        <!--        <span-->
+        <!--          class="p-3 cursor-pointer"-->
+        <!--          :class="{ active: mode === 'output' }"-->
+        <!--          @click="mode = 'output'"-->
+        <!--          >-->
+        <!--          Output-->
+        <!--        </span>-->
         <!--        <span-->
         <!--          class="p-3 cursor-pointer"-->
         <!--          :class="{ active: mode === 'code' }"-->
