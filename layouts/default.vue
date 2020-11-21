@@ -23,12 +23,8 @@ html {
   box-sizing: border-box;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 .container {
-  max-width: 1000px;
+  max-width: 940px;
   margin: 0 auto;
   @apply p-10;
   @apply mb-16;

@@ -4,6 +4,9 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
+    bodyAttrs: {
+      class: 'overflow-x-hidden',
+    },
     title: 'DanielKelly.io',
     meta: [
       { charset: 'utf-8' },
