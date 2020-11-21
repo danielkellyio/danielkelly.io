@@ -27,7 +27,7 @@ await dialog.alert(message)
 /*
  * Confirm
  */
-const confirmed = await dialog.confirm(message, optionalTitle, options)
+const confirmed = await dialog.confirm(message)
 if(confirmed){
     // do the thing needing confirming
 }else{
@@ -229,15 +229,29 @@ export default dialog
 ### Adding Options for Customization
 As of now we've recreated the native methods and addressed issues 1 & 2 stated at the beginning of the article. With the groundwork laid, now it's trivial to address the other issues.
 ```javascript
+// add more state properties
 const state = Vue.observable({
     type: 'alert',
     active: false,
     message: '',
+    title: '',
     okText: 'Ok',
     cancelText: 'Cancel',
     inputType: 'text',
     html: false,
 })
+
+// add extra state props to reset
+const reset = () => {
+  state.active = false
+  state.message = ''
+  state.okText = 'Ok'
+  state.cancelText = 'Cancel'
+  state.inputType = 'text'
+  state.html = false
+  state.title = ''
+  state.type = 'alert'
+}
 const dialog = {
     // ...
     title(title){
