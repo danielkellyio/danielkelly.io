@@ -1,6 +1,6 @@
 ---
-title: Renderless Dialogs (Alert, Confirm, Prompt) in Vue
-description: Learn how to use @nuxt/content.
+title: Renderless Dialogs (Alert, Confirm, and Prompt) in Vue
+description: Make a flexible, customizable, potentially pretty, and functional replacement for `alert()`, `prompt()`, and `confirm()` in Vue.
 github: https://github.com/danielkellyio/renderless-dialog
 ---
 
@@ -61,6 +61,7 @@ const state = Vue.observable({
 We can't actually wait on the user like the native alert, prompt, and confirm, so we'll do the next best thing and return a promise. The promise can then be `await`ed wherever we use our dialog methods.
 
 ```javascript
+// dialog.js
 let close;
 const dialogPromise = () => new Promise((resolve, reject) => close = resolve);
 ``` 
@@ -76,7 +77,7 @@ const dialog = {
         return state
     },
 
-    // The alert function simply set's some state and then returns our dialog promise
+    // The alert function simply sets some state and then returns our dialog promise
     alert(message){
         state.type = 'alert'
         state.message = message
@@ -122,12 +123,14 @@ const dialog = {
     ok(input=true){
         input = state.type === 'prompt' ? input: true
         close(input)
-        reset()
+        state.active = false
+        state.message = ''
     }
 }
 ```
 
-You'll notice now that we have some room for a little refactoring. There is some duplicate code in all the dialog prompt, alert, and confirm methods. The duplicate code looks like this:
+## Refactoring 
+You'll notice now that we have some room for a little refactoring. There is some duplicate code in the prompt, alert, and confirm methods. The duplicate code looks like this:
 ```javascript
 state.message = message
 state.active = true
@@ -160,6 +163,8 @@ const reset = () =>{
 ## Refactored Code 
 After the refactors above we're left with the following clean and simple code.
 ```javascript
+//dialog.js
+
 import Vue from 'vue'
 const state = Vue.observable({
     type: 'alert',
@@ -266,7 +271,7 @@ const confirmed = await dialog
 ```
 
 ## Putting it to Use
-Ultimately, even though our dialog is renderless, it is useless unless we actually render it. Here is an example of rendering the dialog as a Vue component. It's a simple matter of showing/hiding particular elements based on the dialog state and using the dialog methods to cancel and confirm. I just used some super simple html and css here but it you could easily use a vue component library instead.
+Ultimately, even though our dialog is renderless, it is useless unless we actually render it. Here is an example of rendering the dialog as a Vue component. It's a simple matter of showing/hiding particular elements based on the dialog state and using the dialog methods to cancel and confirm. I just used some super simple html and css here but you could easily use a vue component library instead.
 ```vue
 <template>
   <div v-if="dialog.state.active">
@@ -324,4 +329,4 @@ export default{
 ```
 
 
-There you have it. A customizable, pretty, and functional replacement for `alert()`, `prompt()`, and `confirm()` in Vue. Check out the git repo to see the full codebase and if you use the dialog object to render your own alerts, prompts, and confirms, hit me up on twitter [@danielkelly_io](https://twitter.com/danielkelly_io) so I can see the awesome stuff you've made!
+There you have it, A flexible, customizable, potentially pretty, and functional replacement for `alert()`, `prompt()`, and `confirm()` in Vue. Check out the [git repo](https://github.com/danielkellyio/renderless-dialog) to see the full codebase and if you use the dialog object to render your own alerts, prompts, and confirms, hit me up on twitter [@danielkelly_io](https://twitter.com/danielkelly_io) so I can see the awesome stuff you've made!

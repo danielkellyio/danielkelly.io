@@ -29,5 +29,47 @@ export default {
       return prettyDate(this.page.createdAt)
     },
   },
+  head() {
+    return {
+      title: `${this.page.title} | danielkelly.io`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.page.description,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.page.description,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.page.title,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: `https://danielkelly.io/ink-2.jpg`,
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://danielkelly.io/blog/${this.page.slug}`,
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'og:site_name',
+          name: 'og:site_name',
+          content: 'danielkelly.io',
+        },
+      ],
+    }
+  },
 }
 </script>
