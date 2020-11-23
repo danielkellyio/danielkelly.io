@@ -14,7 +14,11 @@
     <nuxt-content :document="page" class="prose" />
 
     <div class="flex justify-center mt-16">
-      <img src="/ink-2.jpg" alt="ink blob" width="100" />
+      <img
+        src="/ink-2.jpg"
+        alt="ink blob"
+        style="max-width: 100%; width: 100px; height: auto"
+      />
     </div>
   </div>
 </template>
