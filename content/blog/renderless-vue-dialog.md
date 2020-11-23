@@ -303,11 +303,15 @@ Ultimately, even though our dialog is renderless, it is useless unless we actual
         <p v-if="dialog.state.html" v-html="dialog.state.message"></p>
         <p v-else>{{ dialog.state.message }}</p>
 
-        <input
-          v-if="dialog.state.type === 'prompt'"
-          v-model="userInput"
-          :type="dialog.state.inputType"
-        />
+        <div class="my-4">
+          <input
+            v-if="dialog.state.type === 'prompt'"
+            v-model="userInput"
+            class="border-2 block w-full"
+            :type="dialog.state.inputType"
+            @keypress.enter="dialog.ok(userInput)"
+          />
+        </div>
 
         <div class="flex justify-end mt-2">
           <dk-button
@@ -381,7 +385,6 @@ export default {
   opacity: 1;
 }
 </style>
-
 ```
 
 ## Demo

@@ -77,6 +77,7 @@ const dialog = {
     reset()
   },
   ok(input = true) {
+    console.log(input, state.type)
     input = state.type === 'prompt' ? input : true
     close(input)
     reset()

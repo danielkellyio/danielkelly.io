@@ -11,9 +11,7 @@ await dialog.html().alert('This alert has &lt;strong&gt;rich text&lt;/strong&gt;
       <pre>
 this.answer = await dialog
 .title('Pet Survey')
-.okText('Of course!')
-.cancelText('Nope')
-.prompt('Do you like dogs?')
+.prompt("What's your pet's name?")
       </pre>
       <dk-button @click="prompt()">Prompt</dk-button>
       <div class="mt-2">Answer: {{ answer }}</div>
@@ -47,9 +45,7 @@ export default {
     async prompt() {
       this.answer = await dialog
         .title('Pet Survey')
-        .okText('Of course!')
-        .cancelText('Nope')
-        .prompt('Do you like dogs?')
+        .prompt("What's your pet's name?")
     },
     async confirm() {
       this.confirmed = await dialog
