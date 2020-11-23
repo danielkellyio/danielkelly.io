@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container overflow-x-hidden">
     <h1>{{ page.title }}</h1>
     <div class="mb-10">
       <h5>
@@ -14,11 +14,6 @@
     <nuxt-content :document="page" class="prose" />
 
     <div class="flex justify-center mt-16">
-      <img
-        src="/ink-2.jpg"
-        alt="ink blob"
-        style="max-width: 100%; width: 100px; height: auto"
-      />
     </div>
   </div>
 </template>
