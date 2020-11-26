@@ -6,7 +6,9 @@
         <li v-for="article in articles" :key="article.slug" class="my-5 shadow">
           <nuxt-link :to="`/blog/${article.slug}`" class="p-5 block">
             <div class="text-lg">{{ article.title }}</div>
-            <small class="italic">- {{ prettyDate(article.createdAt) }}</small>
+            <small class="italic">
+              - {{ prettyDate(article.publishDate) }}
+            </small>
           </nuxt-link>
         </li>
       </ul>

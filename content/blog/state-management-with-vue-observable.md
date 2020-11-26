@@ -1,6 +1,7 @@
 ---
 title: State Management with Vue Observable
 description: Vue.observable() is better than Vuex for keeping up with reactive state in Vue.
+publishDate: 2020-11-26 12:00:00
 ---
 
 `Vue.observable()` is a great way to keep up with reactive state in Vue. "Maybe..." you think, "but what about Vuex?" I've used Vuex for a few production level products and yes it does its job, but writing it is simply no fun. It's overly verbose, doesn't play nicely with my IDE, and more. 

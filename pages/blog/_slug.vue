@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     publishDate() {
-      return prettyDate(this.page.createdAt)
+      return prettyDate(this.page.publishDate)
     },
   },
   head() {
