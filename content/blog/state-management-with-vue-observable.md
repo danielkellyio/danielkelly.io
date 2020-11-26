@@ -1,17 +1,15 @@
 ---
 title: State Management with Vue Observable
-description: `Vue.observable()` is better than Vuex for keeping up with reactive state in Vue.
+description: Vue.observable() is better than Vuex for keeping up with reactive state in Vue.
 ---
 
-`Vue.observable()` is a great way to keep up with reactive state in Vue. "Maybe" you think, "but what about Vuex"? I've used Vuex for a few production level products and yes it does its job, but writing it is simply no fun. It's overly verbose, doesn't play nicely with my IDE, and more. 
+`Vue.observable()` is a great way to keep up with reactive state in Vue. "Maybe..." you think, "but what about Vuex?" I've used Vuex for a few production level products and yes it does its job, but writing it is simply no fun. It's overly verbose, doesn't play nicely with my IDE, and more. 
 
 ## Vue Observable Benefits
 So what does `Vue.observable()` provide that Vuex does not?
 1. It's less verbose
-2. No useless actions vs mutations distinction
-    * (and don't have to remember which method to call (dispatch or commit))
-3. No magic strings
-    * ie calling mutations with commit('functionIdentifiedByString')
+2. No useless actions vs mutations distinction (and don't have to remember which method to call (dispatch or commit))
+3. No magic strings (ie calling mutations with commit('functionIdentifiedByString'))
 4. Plain old method calls makes my IDE happy
     * My IDE can easily jump to or autocomplete `store.increment()` but not `store.dispatch('increment')`
 5. Getters are just plain JS getters (no new concepts to learn)
@@ -34,7 +32,7 @@ const state = Vue.observable({
 })
 
 export default {
-    // make state a getter here to provide access to the private state variable above
+    // make state a getter here to provide access to the private state variable
     // only allow getting so that it cannot be modified without calling a mutation method
     get state(){ return state },
 
@@ -99,8 +97,8 @@ export default{
 </script>
 ```
 
-## Vuex vs Vue.observable()
-Let's compare the 2 with an example from [the official Vuex website](https://vuex.vuejs.org).
+## Vuex vs Vue Observable
+Let's compare the two with an example from [the official Vuex website](https://vuex.vuejs.org).
 
 #### Vuex
 ```javascript
@@ -157,7 +155,7 @@ const store = new Vuex.Store({
 store.increment()
 ```
 
-## Vue.observable() Getters
+## Vue Observable Getters
 ```javascript
 // rewrite of getters example from vuex website using Vue.observable instead
 // (https://vuex.vuejs.org/guide/getters.html#property-style-access)
@@ -177,12 +175,12 @@ export default {
 }
 ```
 
-## Vue.observable() Modules
+## Vue Observable Modules
 ```javascript
 // rewrite of mutations example from vuex website using Vue.observable instead
 // (https://vuex.vuejs.org/guide/modules.html)
 
-// definitions
+//module definitions
 
 // store/a.js
 const state = Vue.observable({})
@@ -205,7 +203,7 @@ import axios from 'axios'
 const state = Vue.observable({/*...*/})
 
 export default {
-    get state(){ return state },
+    // ...
 
     // mutations
     async get(page){/*...*/},
@@ -243,4 +241,4 @@ export default{
 ```
 
 ## Conclusion
-In my experience Vuex is overly complex/verbose, inventing concepts that are more confusing than helpful. If you're used to using Vuex and work on a team that's experienced in it, I wouldn't change anything. However, if you're beginning a new project or on a team that's maybe less experienced in Vuex, I think the `Vue.observable` approach is worth a try. I myself am no Vuex expert and perhaps there are some other problems Vuex addresses that `Vue.observable()` does not, but I haven't run into one yet!
+In my experience Vuex is overly complex and verbose, inventing concepts that are more confusing than helpful. If you're used to using Vuex and work on a team that's experienced in it, I wouldn't change anything. However, if you're beginning a new project or on a team that's maybe less experienced in Vuex, I think the `Vue.observable` approach is worth a try. I myself am no Vuex expert and perhaps there are some other problems Vuex addresses that `Vue.observable()` does not, but I haven't run into one yet!

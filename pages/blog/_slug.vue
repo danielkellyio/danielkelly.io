@@ -25,8 +25,8 @@
 <script>
 import { prettyDate } from '~/helper'
 export default {
-  async asyncData({ $content }) {
-    const page = await $content('blog/renderless-vue-dialog').fetch()
+  async asyncData({ $content, route }) {
+    const page = await $content(`blog/${route.params.slug}`).fetch()
 
     return {
       page,
