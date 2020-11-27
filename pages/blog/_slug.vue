@@ -2,7 +2,7 @@
   <div class="container overflow-x-hidden">
     <h1>{{ post.title }}</h1>
     <div class="mb-5">
-      <h5 class="">
+      <h5 class="text-center md:text-left">
         <div class="md:flex">
           <div class="mr-2">
             Daniel Kelly <span class="text-gray-500">|</span> {{ publishDate }}
@@ -13,7 +13,10 @@
             >
           </div>
         </div>
-        <dk-tags class="mt-4" :tags="post.tags" />
+        <dk-tags
+          class="mt-4 justify-center md:justify-start"
+          :tags="post.tags"
+        />
       </h5>
     </div>
 

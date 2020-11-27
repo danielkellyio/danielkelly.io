@@ -60,6 +60,7 @@ h1:not(.unique) {
     text-align: center;
     padding-right: 0;
     padding-top: 50px;
+    font-size: 1.5rem;
     &::before {
       top: -40px;
       right: 50%;
