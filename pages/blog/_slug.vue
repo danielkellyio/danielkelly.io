@@ -19,7 +19,7 @@
 
     <div class="relative">
       <div class="sm:absolute" style="bottom: 100%; right: 2px">
-        <dk-social-share :url="absoluteUrl" class="justify-around" />
+        <dk-social-share :url="absoluteUrl" class="justify-center" />
       </div>
       <img
         class="feature-image mb-10 border-2 border-gray-100 shadow-lg block"
