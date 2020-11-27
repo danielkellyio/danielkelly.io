@@ -1,65 +1,77 @@
 <template>
   <div class="container overflow-x-hidden">
-    <h1>{{ page.title }}</h1>
+    <h1>{{ post.title }}</h1>
     <div class="mb-10">
-      <h5>
-        <span>Daniel Kelly</span>
-        <span><span class="text-gray-500">|</span> {{ publishDate }}</span>
-        <a v-if="page.github" target="_blank" :href="page.github">
-          <span class="text-gray-500">|</span> View On Github</a
-        >
+      <h5 class="md:flex justify-between items-center">
+        <div class="md:flex">
+          <div class="mr-2">
+            Daniel Kelly <span class="text-gray-500">|</span> {{ publishDate }}
+          </div>
+          <div v-if="post.github" class="mr-2">
+            <a target="_blank" :href="post.github">
+              <span class="text-gray-500">|</span> View On Github</a
+            >
+          </div>
+        </div>
+        <dk-tags class="mt-2 md:mt-0" :tags="post.tags" />
       </h5>
     </div>
 
-    <nuxt-content :document="page" class="prose" />
+    <img
+      class="mb-10 border-2 border-gray-100 shadow-lg"
+      :src="`/${post.slug}.jpg`"
+      :alt="post.title"
+    />
 
-    <div class="flex justify-center mt-16">
-    </div>
+    <nuxt-content :document="post" class="prose" />
+    <dk-related-posts :post="post" />
   </div>
 </template>
 <script>
 import { prettyDate } from '~/helper'
+import DkRelatedPosts from '~/components/DkRelatedPosts'
 export default {
+  components: { DkRelatedPosts },
   async asyncData({ $content, route }) {
-    const page = await $content(`blog/${route.params.slug}`).fetch()
-
+    const slug = route.params.slug
+    const post = await $content(`blog/${slug}`).fetch()
     return {
-      page,
+      post,
     }
   },
   computed: {
     publishDate() {
-      return prettyDate(this.page.publishDate)
+      return prettyDate(this.post.publishDate)
     },
   },
   head() {
     return {
-      title: `${this.page.title} | danielkelly.io`,
+      title: `${this.post.title} | danielkelly.io`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.page.description,
+          content: this.post.description,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.page.description,
+          content: this.post.description,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.page.title,
+          content: this.post.title,
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: `https://danielkelly.io/ink-2.jpg`,
+          content: `/${this.post.slug}.jpg`,
         },
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://danielkelly.io/blog/${this.page.slug}`,
+          content: `https://danielkelly.io/blog/${this.post.slug}`,
         },
         {
           hid: 'twitter:card',

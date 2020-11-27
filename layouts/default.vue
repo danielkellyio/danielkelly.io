@@ -37,7 +37,7 @@ html {
 }
 h1:not(.unique) {
   font-size: 2rem;
-  border-bottom: 1px solid var(--pink);
+  border-bottom: 2px solid var(--pink);
   padding-bottom: 10px;
   margin-bottom: 10px;
   position: relative;

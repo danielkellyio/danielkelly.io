@@ -3,6 +3,9 @@ title: Renderless Dialogs (Alert, Confirm, and Prompt) in Vue
 description: Make a flexible, customizable, potentially pretty, and functional replacement for `alert()`, `prompt()`, and `confirm()` in Vue.
 publishDate: 2020-11-23 12:00:00
 github: https://github.com/danielkellyio/renderless-dialog
+tags:
+    - Vue
+    - Javascript
 ---
 
 ## What We're Making
