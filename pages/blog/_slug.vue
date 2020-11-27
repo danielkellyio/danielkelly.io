@@ -30,13 +30,15 @@
 
     <nuxt-content :document="post" class="prose" />
     <dk-related-posts :post="post" :url="absoluteUrl" />
+    <dk-surrounding-posts :current-post="post" />
   </div>
 </template>
 <script>
 import { prettyDate } from '~/helper'
 import DkRelatedPosts from '~/components/DkRelatedPosts'
+import DkSurroundingPosts from '~/components/DkSurroundingPosts'
 export default {
-  components: { DkRelatedPosts },
+  components: { DkRelatedPosts, DkSurroundingPosts },
   async asyncData({ $content, route }) {
     const slug = route.params.slug
     const post = await $content(`blog/${slug}`).fetch()
