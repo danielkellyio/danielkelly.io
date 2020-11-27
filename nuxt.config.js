@@ -39,6 +39,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/fontawesome',
+    '@aceforth/nuxt-netlify',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -62,5 +63,15 @@ export default {
       solid: ['faNewspaper', 'faHome'],
       brands: ['faGithub', 'faTwitter', 'faFacebookF', 'faLinkedinIn'],
     },
+  },
+  netlify: {
+    mergeSecurityHeaders: true,
+    redirects: [
+      {
+        from: '*',
+        to: '404.html',
+        status: 404,
+      },
+    ],
   },
 }
