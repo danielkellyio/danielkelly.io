@@ -28,6 +28,7 @@
         class="feature-image mb-10 border-2 border-gray-100 shadow-lg block"
         :src="`/${post.slug}.jpg`"
         :alt="post.title"
+        height="446px"
       />
     </div>
 
