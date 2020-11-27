@@ -24,12 +24,14 @@
       <div class="sm:absolute" style="bottom: 100%; right: 2px">
         <dk-social-share :url="absoluteUrl" class="justify-center" />
       </div>
-      <img
-        class="feature-image mb-10 border-2 border-gray-100 shadow-lg block"
-        :src="`/${post.slug}.jpg`"
-        :alt="post.title"
-        height="446px"
-      />
+      <div class="feature-image-wrapper">
+        <img
+          class="feature-image mb-10 border-2 border-gray-100 shadow-lg block"
+          :src="`/${post.slug}.jpg`"
+          :alt="post.title"
+          height="446px"
+        />
+      </div>
     </div>
 
     <nuxt-content :document="post" class="prose" />
@@ -112,8 +114,16 @@ export default {
     opacity: 1;
   }
 }
-.feature-image {
+.feature-image-wrapper {
+  @apply relative;
   transform-origin: top;
   animation: featureImageEnter 1s ease-in;
+  object-fit: cover;
+  width: 100%;
+  padding-top: 57%;
+}
+.feature-image {
+  @apply absolute top-0 bottom-0 left-0 right-0;
+  object-fit: cover;
 }
 </style>
