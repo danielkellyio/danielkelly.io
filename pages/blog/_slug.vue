@@ -1,8 +1,8 @@
 <template>
   <div class="container overflow-x-hidden">
     <h1>{{ post.title }}</h1>
-    <div class="mb-10">
-      <h5 class="md:flex justify-between items-center">
+    <div class="mb-5">
+      <h5 class="">
         <div class="md:flex">
           <div class="mr-2">
             Daniel Kelly <span class="text-gray-500">|</span> {{ publishDate }}
@@ -13,18 +13,23 @@
             >
           </div>
         </div>
-        <dk-tags class="mt-2 md:mt-0" :tags="post.tags" />
+        <dk-tags class="mt-4" :tags="post.tags" />
       </h5>
     </div>
 
-    <img
-      class="mb-10 border-2 border-gray-100 shadow-lg"
-      :src="`/${post.slug}.jpg`"
-      :alt="post.title"
-    />
+    <div class="relative">
+      <div class="sm:absolute" style="bottom: 100%; right: 2px">
+        <dk-social-share :url="absoluteUrl" class="justify-around" />
+      </div>
+      <img
+        class="mb-10 border-2 border-gray-100 shadow-lg block"
+        :src="`/${post.slug}.jpg`"
+        :alt="post.title"
+      />
+    </div>
 
     <nuxt-content :document="post" class="prose" />
-    <dk-related-posts :post="post" />
+    <dk-related-posts :post="post" :url="absoluteUrl" />
   </div>
 </template>
 <script>
@@ -42,6 +47,9 @@ export default {
   computed: {
     publishDate() {
       return prettyDate(this.post.publishDate)
+    },
+    absoluteUrl() {
+      return `https://danielkelly.io/blog/${this.post.slug}`
     },
   },
   head() {
@@ -71,7 +79,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: `https://danielkelly.io/blog/${this.post.slug}`,
+          content: this.absoluteUrl,
         },
         {
           hid: 'twitter:card',

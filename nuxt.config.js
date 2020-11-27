@@ -24,7 +24,7 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['~/assets/style.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ['~/plugins/Components'],
@@ -60,7 +60,7 @@ export default {
   fontawesome: {
     icons: {
       solid: ['faNewspaper', 'faHome'],
-      brands: ['faGithub', 'faTwitter'],
+      brands: ['faGithub', 'faTwitter', 'faFacebookF', 'faLinkedinIn'],
     },
   },
 }
