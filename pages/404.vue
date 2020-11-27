@@ -3,7 +3,7 @@
   <div class="container text-center md:text-left">
     <h2 class="hidden md:block" style="font-size: 8rem">404</h2>
     <h1>
-      <h2 class="block md:hidden" style="font-size: 8rem">404</h2>
+      <span class="block md:hidden" style="font-size: 8rem">404</span>
       Page not found
     </h1>
     <nuxt-link to="/">Home Page</nuxt-link>
