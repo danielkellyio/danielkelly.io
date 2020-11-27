@@ -22,7 +22,7 @@
         <dk-social-share :url="absoluteUrl" class="justify-around" />
       </div>
       <img
-        class="mb-10 border-2 border-gray-100 shadow-lg block"
+        class="feature-image mb-10 border-2 border-gray-100 shadow-lg block"
         :src="`/${post.slug}.jpg`"
         :alt="post.title"
       />
@@ -98,3 +98,18 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+@keyframes featureImageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.feature-image {
+  transform-origin: top;
+  animation: featureImageEnter 1s ease-in;
+}
+</style>

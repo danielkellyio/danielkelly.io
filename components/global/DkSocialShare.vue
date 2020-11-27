@@ -33,6 +33,14 @@ export default {
 </script>
 
 <style scoped>
+@keyframes triggerSettle {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(50%);
+  }
+}
 .social-share-wrapper {
   height: 4rem;
   overflow: hidden;
@@ -41,6 +49,7 @@ export default {
 .share-trigger {
   font-size: 2rem;
   @apply bg-gray-400 text-white p-2 block;
+  animation: triggerSettle 0.6s ease-in;
   transition: 0.4s ease all;
   transform: translateY(50%);
   &:hover {
