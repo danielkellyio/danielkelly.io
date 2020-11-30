@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container overflow-x-hidden">
     <h1>Blog</h1>
     <div class="max-w-6xl">
       <dk-posts-list :posts="posts" />
