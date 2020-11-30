@@ -7,7 +7,7 @@
     </h1>
     <nuxt-link to="/">Home Page</nuxt-link>
     <span class="px-2">|</span>
-    <nuxt-link to="/">Blog</nuxt-link>
+    <nuxt-link to="/blog">Blog</nuxt-link>
     <span class="px-2">|</span>
     <nuxt-link to="https://github.com/danielkellyio">Github</nuxt-link>
     <span class="px-2">|</span>
@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  // eslint-disable-next-line
   props: ['error'],
   layout: 'error', // you can set a custom layout for the error page
 }
