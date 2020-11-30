@@ -8,7 +8,7 @@
     </h1>
     <nuxt-link to="/">Home Page</nuxt-link>
     <span class="px-2">|</span>
-    <nuxt-link to="/">Blog</nuxt-link>
+    <nuxt-link to="/blog">Blog</nuxt-link>
     <span class="px-2">|</span>
     <a target="_blank" href="https://github.com/danielkellyio">Github</a>
     <span class="px-2">|</span>
