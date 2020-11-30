@@ -97,6 +97,26 @@ export default {
           content: 'summary_large_image',
         },
         {
+          hid: 'twitter:site',
+          name: 'twitter:site',
+          content: '@danielkelly_io',
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: this.post.title,
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: this.post.description,
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: `https://danielkelly.io/${this.post.slug}.jpg`,
+        },
+        {
           hid: 'og:site_name',
           name: 'og:site_name',
           content: 'danielkelly.io',
