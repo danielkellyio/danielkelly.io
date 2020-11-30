@@ -36,6 +36,7 @@
 
     <nuxt-content :document="post" class="prose" />
     <dk-related-posts :post="post" :url="absoluteUrl" />
+    <dk-comments />
     <dk-surrounding-posts :current-post="post" />
   </div>
 </template>
@@ -43,8 +44,9 @@
 import { prettyDate } from '~/helper'
 import DkRelatedPosts from '~/components/DkRelatedPosts'
 import DkSurroundingPosts from '~/components/DkSurroundingPosts'
+import DkComments from '~/components/DkComments'
 export default {
-  components: { DkRelatedPosts, DkSurroundingPosts },
+  components: { DkRelatedPosts, DkSurroundingPosts, DkComments },
   async asyncData({ $content, route }) {
     const slug = route.params.slug
     const post = await $content(`blog/${slug}`).fetch()

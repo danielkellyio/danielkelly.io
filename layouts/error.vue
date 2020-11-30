@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  // eslint-disable-next-line
   props: ['error'],
   layout: 'error', // you can set a custom layout for the error page
 }
