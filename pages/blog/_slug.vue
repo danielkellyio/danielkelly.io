@@ -84,7 +84,7 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: `/${this.post.slug}.jpg`,
+          content: `https://danielkelly.io/${this.post.slug}.jpg`,
         },
         {
           hid: 'og:url',
