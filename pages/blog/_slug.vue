@@ -59,7 +59,7 @@ export default {
       return prettyDate(this.post.publishDate)
     },
     absoluteUrl() {
-      return `https://danielkelly.io/blog/${this.post.slug}`
+      return `https://danielkelly.io/blog/${this.post.slug}/`
     },
   },
   head() {
