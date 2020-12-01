@@ -1,4 +1,4 @@
-import config from '~/config/app'
+import config from '../config/app'
 let posts = []
 
 const constructFeedItem = (post, dir, hostname) => {
