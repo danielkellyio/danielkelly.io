@@ -12,7 +12,10 @@ import { prettyDate } from '@/helper'
 
 export default {
   async asyncData(ctx) {
-    const posts = await ctx.$content('blog').sortBy('createdAt').fetch()
+    const posts = await ctx
+      .$content('blog')
+      .sortBy('publishDate', 'desc')
+      .fetch()
     return { posts }
   },
   methods: {
