@@ -36,6 +36,7 @@
 
     <nuxt-content :document="post" class="prose" />
     <dk-related-posts :post="post" :url="absoluteUrl" />
+    <dk-newsletter class="mt-10" />
     <dk-comments />
     <dk-surrounding-posts :current-post="post" />
   </div>
