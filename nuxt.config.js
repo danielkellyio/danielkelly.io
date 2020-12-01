@@ -1,3 +1,4 @@
+import feed from './support/feed'
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -46,10 +47,20 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://github.com/nuxt-community/feed-module
+    '@nuxtjs/feed',
   ],
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
+  feed,
+  hooks: {
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        document.bodyPlainText = document.text
+      }
+    },
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
