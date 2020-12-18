@@ -35,9 +35,15 @@
     </div>
 
     <nuxt-content :document="post" class="prose" />
+    <div class="pt-10 text-lg text-blue-500 text-right">
+      <a :href="`https://twitter.com/search?q=${absoluteUrl}`" target="_blank">
+        <font-awesome-icon :icon="['fab', 'twitter']" />
+        Discuss on Twitter
+      </a>
+    </div>
     <dk-related-posts :post="post" :url="absoluteUrl" />
     <dk-newsletter class="mt-10" />
-    <dk-comments />
+    <!--    <dk-comments />-->
     <dk-surrounding-posts :current-post="post" />
   </div>
 </template>
@@ -45,9 +51,9 @@
 import { prettyDate } from '~/helper'
 import DkRelatedPosts from '~/components/DkRelatedPosts'
 import DkSurroundingPosts from '~/components/DkSurroundingPosts'
-import DkComments from '~/components/DkComments'
+// import DkComments from '~/components/DkComments'
 export default {
-  components: { DkRelatedPosts, DkSurroundingPosts, DkComments },
+  components: { DkRelatedPosts, DkSurroundingPosts },
   async asyncData({ $content, route }) {
     const slug = route.params.slug
     const post = await $content(`blog/${slug}`).fetch()

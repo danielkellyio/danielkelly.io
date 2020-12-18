@@ -35,6 +35,7 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '~/modules/algolia',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
@@ -50,6 +51,14 @@ export default {
     // https://github.com/nuxt-community/feed-module
     '@nuxtjs/feed',
   ],
+
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    algoliaAppId: process.env.ALGOLIA_APP_ID,
+  },
+  privateRuntimeConfig: {
+    algoliaApiKey: process.env.ALGOLIA_API_KEY,
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
@@ -82,6 +91,16 @@ export default {
         from: '*',
         to: '404.html',
         status: 404,
+      },
+    ],
+  },
+  nuxtAlgolia: {
+    appId: 'LK1CX5PNTW',
+    apiKey: '1cfc88c8fd1851d5abda71e136e94ccf',
+    paths: [
+      {
+        name: 'blog',
+        fields: ['title', 'description', 'bodyPlainText', 'tags'],
       },
     ],
   },
