@@ -160,6 +160,10 @@ store.increment()
 ```
 
 ## Vue Observable Getters
+<dk-content-alert title="Edit December 18, 2020">
+One limitation of native getters compared to Vuex getters is that the result is not automatically cached based on its dependencies. If you are working with a small dataset this isn't usually an issue but large datasets will suffer performance issues without manual caching.  
+</dk-content-alert>
+
 ```javascript
 // rewrite of getters example from vuex website using Vue.observable instead
 // (https://vuex.vuejs.org/guide/getters.html#property-style-access)
