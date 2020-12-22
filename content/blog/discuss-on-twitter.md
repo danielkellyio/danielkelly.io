@@ -1,6 +1,6 @@
 ---
 title: Discuss on Twitter Link For Nuxt Content Blog Posts
-description: Get your readers talking about your blog posts on Twitter with this simple "Discuss on Twitter" link
+description: Get your readers talking about your Nuxt Content powered blog posts on Twitter with this simple "Discuss on Twitter" link
 publishDate: 2020-12-22 12:00:00
 github: https://gist.github.com/danielkellyio/fee9ebe5b08cd0e1b6442ec572da265c
 tags:
