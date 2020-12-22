@@ -1,6 +1,10 @@
 <template>
   <div class="speech-bubble text-blue-500 mt-16">
-    <a :href="`https://twitter.com/search?q=${url}`" target="_blank">
+    <a
+      :href="`https://twitter.com/search?q=${url}`"
+      target="_blank"
+      class="block"
+    >
       <font-awesome-icon :icon="['fab', 'twitter']" />
       Discuss on Twitter
     </a>
