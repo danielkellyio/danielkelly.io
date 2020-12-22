@@ -7,7 +7,7 @@ tags:
     - Javascript
     - Nuxt
 ---
-The Github app "Utterances" enables you to quickly add a github style comments section to your static site in under 10 minutes. See the comments section at the end of the blog post to see it in action.
+The Github app "Utterances" enables you to quickly add a github style comments section to your static site in under 10 minutes.
 
 ## Utterances Benefits
 1. Super quick setup
