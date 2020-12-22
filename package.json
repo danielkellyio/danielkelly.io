@@ -15,7 +15,9 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@nuxt/content": "^1.9.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "instantsearch.css": "^7.4.5",
+    "nuxt": "^2.14.6",
+    "vue-instantsearch": "^3.4.2"
   },
   "devDependencies": {
     "@aceforth/nuxt-netlify": "^1.1.0",

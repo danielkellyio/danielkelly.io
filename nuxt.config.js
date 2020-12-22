@@ -25,10 +25,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/style.css'],
+  css: ['~/assets/style.css', 'instantsearch.css/themes/algolia-min.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/Components'],
+  plugins: ['~/plugins/Components', '~/plugins/Algolia.client'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -55,6 +55,7 @@ export default {
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:3000',
     algoliaAppId: process.env.ALGOLIA_APP_ID,
+    algoliaSearchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY,
   },
   privateRuntimeConfig: {
     algoliaApiKey: process.env.ALGOLIA_API_KEY,
@@ -80,7 +81,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faNewspaper', 'faHome'],
+      solid: ['faNewspaper', 'faHome', 'faSearch'],
       brands: ['faGithub', 'faTwitter', 'faFacebookF', 'faLinkedinIn'],
     },
   },
@@ -95,8 +96,8 @@ export default {
     ],
   },
   nuxtAlgolia: {
-    appId: 'LK1CX5PNTW',
-    apiKey: '1cfc88c8fd1851d5abda71e136e94ccf',
+    appId: process.env.ALGOLIA_APP_ID,
+    apiKey: process.env.ALGOLIA_API_KEY,
     paths: [
       {
         name: 'blog',
