@@ -42,7 +42,6 @@
   </div>
 </template>
 <script>
-import DkDiscussOnTwitter from '@/components/DkDiscussOnTwitter'
 import { prettyDate } from '~/helper'
 import DkRelatedPosts from '~/components/DkRelatedPosts'
 import DkSurroundingPosts from '~/components/DkSurroundingPosts'
@@ -50,7 +49,6 @@ export default {
   components: {
     DkRelatedPosts,
     DkSurroundingPosts,
-    DkDiscussOnTwitter,
   },
   async asyncData({ $content, route }) {
     const slug = route.params.slug
