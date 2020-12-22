@@ -97,7 +97,7 @@ Grab the CSS from the codepen and slightly modify it to fit the styles for our c
 </style>
 ```
 
-Finally, since I'm using [Tailwind CSS](https://tailwindcss.com/) and [Font Awesome](https://www.npmjs.com/package/nuxt-fontawesome) I can round out the styles with a couple classes and a Twitter icon.
+Since I'm using [Tailwind CSS](https://tailwindcss.com/) and [Font Awesome](https://www.npmjs.com/package/nuxt-fontawesome) I can round out the styles with a couple classes and a Twitter icon.
 ```vue
 <template>
   <div class="speech-bubble mt-16">
@@ -112,4 +112,5 @@ Finally, since I'm using [Tailwind CSS](https://tailwindcss.com/) and [Font Awes
 </template>
 ```
 
-Want to grab the "Discuss on Twitter" Vue component for quick use in your Nuxt project? Copy the full component code from Github [here](https://gist.github.com/danielkellyio/fee9ebe5b08cd0e1b6442ec572da265c).
+## Conclusion
+A "Discuss on Twitter" link is a simple and effective way to talk about your blog posts. In order to implement it in your Vue/Nuxt project you can copy the full component code from Github [here](https://gist.github.com/danielkellyio/fee9ebe5b08cd0e1b6442ec572da265c). Once you've published your post, don't forget to actually share the post on twitter so there is an initial post to talk about!
