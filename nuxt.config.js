@@ -25,16 +25,17 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/style.css'],
+  css: ['~/assets/style.css', 'instantsearch.css/themes/algolia-min.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/Components'],
+  plugins: ['~/plugins/Components', '~/plugins/Algolia.client'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '~/modules/algolia',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
@@ -50,6 +51,15 @@ export default {
     // https://github.com/nuxt-community/feed-module
     '@nuxtjs/feed',
   ],
+
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    algoliaAppId: process.env.ALGOLIA_APP_ID,
+    algoliaSearchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY,
+  },
+  privateRuntimeConfig: {
+    algoliaApiKey: process.env.ALGOLIA_API_KEY,
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
@@ -71,7 +81,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faNewspaper', 'faHome'],
+      solid: ['faNewspaper', 'faHome', 'faSearch'],
       brands: ['faGithub', 'faTwitter', 'faFacebookF', 'faLinkedinIn'],
     },
   },
@@ -82,6 +92,16 @@ export default {
         from: '*',
         to: '404.html',
         status: 404,
+      },
+    ],
+  },
+  nuxtAlgolia: {
+    appId: process.env.ALGOLIA_APP_ID,
+    apiKey: process.env.ALGOLIA_API_KEY,
+    paths: [
+      {
+        name: 'blog',
+        fields: ['title', 'description', 'bodyPlainText', 'tags'],
       },
     ],
   },

@@ -1,48 +1,59 @@
 <template>
-  <div
-    class="flex items-center bg-gray-200 p-4 fixed bottom-0 w-full z-10 opacity-75 justify-center sm:justify-between flex-col sm:flex-row"
-  >
-    <div class="left hidden sm:block" style="font-size: 1.5rem">
-      <img
-        class="mr-2 inline"
-        width="40px"
-        height="40px"
-        src="/logo.png"
-        alt="danielkelly.io"
-      />danielkelly.io
+  <div>
+    <div
+      class="flex items-center bg-gray-200 p-4 fixed bottom-0 w-full z-10 opacity-75 justify-center sm:justify-between flex-col sm:flex-row"
+    >
+      <div class="left hidden sm:block" style="font-size: 1.5rem">
+        <img
+          class="mr-2 inline"
+          width="40px"
+          height="40px"
+          src="/logo.png"
+          alt="danielkelly.io"
+        />danielkelly.io
+      </div>
+      <nav class="right">
+        <ul class="flex">
+          <li class="sm:hidden">
+            <router-link to="/">
+              <img
+                class="inline mr-2"
+                width="40px"
+                height="40px"
+                src="/logo.png"
+                alt="danielkelly.io"
+              />
+            </router-link>
+          </li>
+          <li v-for="link in links" :key="JSON.stringify(link)" class="mx-1">
+            <component
+              :is="link.attrs.to ? 'router-link' : 'a'"
+              v-bind="link.attrs"
+              class="p-3 nav-item"
+              @click="link.click ? link.click() : null"
+            >
+              <font-awesome-icon v-if="link.icon" :icon="link.icon" size="lg" />
+              <span v-if="link.label"></span>
+            </component>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <nav class="right">
-      <ul class="flex">
-        <li class="sm:hidden">
-          <router-link to="/">
-            <img
-              class="inline mr-2"
-              width="40px"
-              height="40px"
-              src="/logo.png"
-              alt="danielkelly.io"
-            />
-          </router-link>
-        </li>
-        <li v-for="link in links" :key="JSON.stringify(link)" class="mx-1">
-          <component
-            :is="link.attrs.to ? 'router-link' : 'a'"
-            v-bind="link.attrs"
-            class="p-3 nav-item"
-          >
-            <font-awesome-icon v-if="link.icon" :icon="link.icon" size="lg" />
-            <span v-if="link.label"></span>
-          </component>
-        </li>
-      </ul>
-    </nav>
+    <dk-search
+      :active="searchActive"
+      @close="searchActive = false"
+      @open="searchActive = true"
+    />
   </div>
 </template>
 
 <script>
+import DkSearch from '@/components/DkSearch'
 export default {
+  components: { DkSearch },
   data() {
     return {
+      searchActive: false,
       links: [
         {
           icon: ['fas', 'home'],
@@ -69,6 +80,15 @@ export default {
           icon: ['fas', 'newspaper'],
           attrs: {
             to: '/blog',
+          },
+        },
+        {
+          icon: ['fas', 'search'],
+          click: () => {
+            this.searchActive = true
+          },
+          attrs: {
+            title: '"/" to focus',
           },
         },
       ],
