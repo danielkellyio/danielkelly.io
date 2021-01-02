@@ -117,6 +117,9 @@ this.nuxt.hook(config.hook, async (nuxt) => {
     const client = algoliasearch(config.appId, config.apiKey)
     const index = client.initIndex(indexName)
 
+    // clear the index in case any documents were removed
+    index.clearObjects()
+    
     // Finally save the new documents and output a success message
     const { objectIDs } = await index.saveObjects(docs)
     consola.success(
