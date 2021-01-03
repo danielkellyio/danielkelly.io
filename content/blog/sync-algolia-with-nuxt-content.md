@@ -10,23 +10,28 @@ tags:
 ---
 
 ## TLDR
-I published the results of this tutorial to npm as a package. If you're looking to just grab and go, you can [install the module via npm](https://www.npmjs.com/package/nuxt-content-algolia). Note this package only handles syncing the data to Algolia, it does nothing about rendering a search UI for your Nuxt website. You can read more about implementing the UI in [Algolia's official docs for Vue Instant Search](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/vue/)
+I published the results of this tutorial to npm as a package. If you're looking to just grab and go, you can [install the module via npm](https://www.npmjs.com/package/nuxt-content-algolia). If you want to learn more about Nuxt modules and the Algolia javascript SDK, read on! Note this package only handles syncing the data to Algolia, it does nothing about rendering a search UI for your Nuxt website. You can read more about implementing the UI in [Algolia's official docs for Vue Instant Search](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/vue/) or stay tuned for my next post.
 
 ## Why Sync Content to Algolia?
 Using Nuxt as a static site generator is a great developer experience and makes for a fast site. Storing the content in static files alone however doesn't make search simple. Algolia not only makes search simple (can start out with simple text search) but scales tremendously with the ability to provide all kind of filtering and weights to your search data. You can read more about the features of Algolia [here](https://www.algolia.com/products/search/).
 
 ## Creating the Module
-In order to sync our content to Algolia, we're going to be building a Nuxt module. According to [Nuxt's official docs](https://nuxtjs.org/docs/2.x/directory-structure/modules/) "modules can easily register hooks for certain entry points..." and that's exactly what we want to do. We want to hook into the generation process and at the end of it read our content and insert it into Algolia via the [Algolia Javascript SDK](https://www.npmjs.com/package/algoliasearch). 
+In order to sync our content to Algolia, we're going to be building a Nuxt module. Modules make it simple to reuse logic across different projects and run custom code at specified points during the Nuxt lifecycle. We're going to hook into the generation process and run custom code at the end of it to read our content and insert it into Algolia via the [Algolia Javascript SDK](https://www.npmjs.com/package/algoliasearch). 
 
 ### Module "interface"
 We will interact with the module by configuring it in nuxt.config.js
 ```javascript
 // nuxt.config.js
 export default{
+    
+  // this registers the module to be used
+  // it's only needed during the build so it can be registered under buildModules (not modules)
   buildModules: [
     '~/modules/nuxt-content-algolia',
     // ...
   ],
+  
+  // configuration options here
   nuxtContentAlgolia: {
     appId: process.env.ALGOLIA_APP_ID,
     // !IMPORTANT secret key should always be an environment variable
@@ -49,6 +54,7 @@ export default{
 
 ### Accepting module options
 Our actual module can live in a file at `modules/nuxt-content-algolia` (notice this is where we told nuxt config to look for the "build module"). First thing we should do in our file is to allow our module to accept the configuration options from the nuxt.config.js and merge those options with the some defaults.
+
 ```javascript
 // modules/nuxt-content-algolia
 
@@ -64,6 +70,7 @@ export default function algoliaModule(moduleOptions = {}) {
 
 ### Require Algolia app id and api key
 The Algolia SDK requires us to provide an app id and a secret api key to interact with it. If those aren't provided we might as well not even attempt to sync things to algolia, so let's check for those up front. If they don't exist we'll report an error to the console and return from the module to let the build continue on its merry way.
+
 ```javascript
 const consola = require('consola')
 export default function algoliaModule(moduleOptions = {}) {
@@ -131,6 +138,6 @@ this.nuxt.hook(config.hook, async (nuxt) => {
 ```
 
 ## Conclusion
-Nuxt modules are super powerful tools that allow you to hook into many different points of the Nuxt lifecycle. Nuxt modules provide the perfect avenue for taking content stored with Nuxt content in your file system and mirroring that content in a powerful search index like Algolia.
+Nuxt modules are super powerful tools that allow you to hook into different points of the Nuxt lifecycle and make standard ways of dealing with the same problem across projects. Nuxt modules provide the perfect avenue for taking content stored with Nuxt content in your file system and mirroring that content in a powerful search index like Algolia.
 
-If you're interested in taking the next step with Nuxt + Algolia and actually implementing the search UI, [sign up for the newsletter](#newsletter) and so you don't miss the next post!
+If you're interested in taking the next step with Nuxt + Algolia and actually implementing the search UI, [sign up for the newsletter](#newsletter) so you don't miss the next post!
