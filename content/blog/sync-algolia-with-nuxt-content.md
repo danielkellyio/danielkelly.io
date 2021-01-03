@@ -6,6 +6,7 @@ github: null
 tags:
 - Vue
 - Javascript
+- Nuxt
 ---
 
 ## TLDR
@@ -131,3 +132,5 @@ this.nuxt.hook(config.hook, async (nuxt) => {
 
 ## Conclusion
 Nuxt modules are super powerful tools that allow you to hook into many different points of the Nuxt lifecycle. Nuxt modules provide the perfect avenue for taking content stored with Nuxt content in your file system and mirroring that content in a powerful search index like Algolia.
+
+If you're interested in taking the next step with Nuxt + Algolia and actually implementing the search UI, [sign up for the newsletter](#newsletter) and so you don't miss the next post!

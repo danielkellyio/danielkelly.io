@@ -1,5 +1,6 @@
 <template>
   <form
+    id="newsletter"
     action="https://app.convertkit.com/forms/1855271/subscriptions"
     class="seva-form formkit-form text-center bg-gray-300 p-5"
     method="post"
