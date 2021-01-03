@@ -21,6 +21,7 @@ export default {
         tags: { $containsAny: this.post.tags },
         slug: { $ne: this.post.slug },
       })
+      .limit(3)
       .fetch()
   },
   data() {

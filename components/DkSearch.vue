@@ -24,7 +24,10 @@
             font-size: 1.8rem;
           "
         />
-        <ais-instant-search :search-client="searchClient" index-name="blog">
+        <ais-instant-search
+          :search-client="searchClient"
+          :index-name="$config.algolia.index"
+        >
           <ais-autocomplete>
             <div slot-scope="{ currentRefinement, indices, refine }">
               <input
@@ -108,8 +111,8 @@ export default {
     return {
       query: '',
       searchClient: algoliasearch(
-        this.$config.algoliaAppId,
-        this.$config.algoliaSearchOnlyApiKey
+        this.$config.algolia.appId,
+        this.$config.algolia.searchOnlyApiKey
       ),
     }
   },
