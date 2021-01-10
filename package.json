@@ -17,7 +17,8 @@
     "core-js": "^3.6.5",
     "instantsearch.css": "^7.4.5",
     "nuxt": "^2.14.6",
-    "vue-instantsearch": "^3.4.2"
+    "vue-instantsearch": "^3.4.2",
+    "vue-split-panel": "^1.0.4"
   },
   "devDependencies": {
     "@aceforth/nuxt-netlify": "^1.1.0",
