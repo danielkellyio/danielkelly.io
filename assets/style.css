@@ -1,1 +1,5 @@
 @import "./forms.css";
+@import "./content.css";
+html{
+  scroll-behavior: smooth;
+}
