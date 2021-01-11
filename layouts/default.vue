@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$route.path === '/' ? 'home-page' : ''">
     <dk-header />
     <transition name="home">
       <Nuxt />

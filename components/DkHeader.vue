@@ -74,6 +74,7 @@ export default {
         {
           icon: ['fas', 'newspaper'],
           attrs: {
+            class: 'pulse',
             to: '/blog',
           },
         },
@@ -91,6 +92,19 @@ export default {
   },
 }
 </script>
+<style>
+@keyframes pulse {
+  from {
+    color: initial;
+  }
+  to {
+    color: var(--pink);
+  }
+}
+.home-page .pulse {
+  animation: pulse 1.5s ease infinite alternate;
+}
+</style>
 <style scoped>
 li svg {
   font-size: 2.5rem;
