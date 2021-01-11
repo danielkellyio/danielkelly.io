@@ -119,9 +119,9 @@ h1 {
   color: #555;
   opacity: 1;
   text-shadow: 0 0 20px white, 1px 1px 5px white, -1px -1px 5px white;
-  span {
-    mix-blend-mode: hard-light;
-  }
+}
+h1 span {
+  mix-blend-mode: hard-light;
 }
 h2 {
   font-size: 3rem;
@@ -138,7 +138,9 @@ h2.active {
   border-radius: 35px;
   line-height: 1;
   display: inline-block;
-  @media (min-width: 1031px) {
+}
+@media (min-width: 1031px) {
+  h2 {
     margin-top: -20px;
   }
 }
@@ -172,12 +174,12 @@ h2.active {
   h1 {
     font-size: 4rem;
     line-height: 1;
-    &.with-feature {
-      padding-top: 200px;
-    }
-    span {
-      mix-blend-mode: unset !important;
-    }
+  }
+  h1.with-feature {
+    padding-top: 200px;
+  }
+  h1 span {
+    mix-blend-mode: unset !important;
   }
   h2 {
     margin-top: 20px;
@@ -193,44 +195,38 @@ h2.active {
   h2 {
     margin-top: 0;
     padding: 10px;
-    &.active {
-      margin-top: 20px;
-    }
+  }
+  h2.active {
+    margin-top: 20px;
   }
 }
 .brands {
   will-change: auto;
   transition: 2s ease height;
-  height: 0;
-  &.active {
-    height: 200px;
-  }
-  @media (max-width: 1032px) {
+  height: 200px;
+}
+@media (max-width: 1032px) {
+  .brands {
     justify-content: center;
   }
 }
 .feature {
-  opacity: 0;
   transition: 2s ease;
   height: 700px;
   z-index: -1;
   left: -120px;
   top: -200px;
   max-width: none;
-  &.active {
-    opacity: 1;
-  }
-  @media (max-width: 1032px) {
+}
+@media (max-width: 1032px) {
+  .feature {
     transition: 1s ease;
-    top: -220px;
     left: 50%;
     height: 200px;
     animation: fadeInDownCenteredX 1s ease;
     transform: translateX(-50%);
-    &.active {
-      top: -20px;
-      opacity: 1;
-    }
+    top: -20px;
+    opacity: 1;
   }
 }
 </style>
