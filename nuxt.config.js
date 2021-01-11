@@ -80,7 +80,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faNewspaper', 'faHome', 'faSearch'],
+      solid: ['faNewspaper', 'faHome', 'faSearch', 'faTags'],
       brands: ['faGithub', 'faTwitter', 'faFacebookF', 'faLinkedinIn'],
     },
   },

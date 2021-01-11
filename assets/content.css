@@ -1,3 +1,6 @@
 .nuxt-content img{
   @apply border-4 border-gray-200;
 }
+.prose{
+  font-size:1.1rem;
+}

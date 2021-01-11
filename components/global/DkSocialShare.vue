@@ -43,17 +43,24 @@ export default {
 }
 .social-share-wrapper {
   height: 4rem;
-  overflow: hidden;
   line-height: 1.75rem !important;
+  @media (min-width: 769px) {
+    overflow: hidden;
+  }
 }
 .share-trigger {
   font-size: 2rem;
   @apply bg-gray-400 text-white p-2 block;
   animation: triggerSettle 0.6s ease-in;
   transition: 0.4s ease all;
-  transform: translateY(50%);
+  transform: translateY(-50%);
+  @media (min-width: 769px) {
+    transform: translateY(50%);
+  }
   &:hover {
-    transform: translateY(0%);
+    @media (min-width: 769px) {
+      transform: translateY(0%);
+    }
     @apply bg-pink-500;
   }
 }
