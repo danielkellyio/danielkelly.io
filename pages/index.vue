@@ -193,7 +193,6 @@ h2.active {
   h2 {
     margin-top: 0;
     padding: 10px;
-    font-size: 1.7rem;
     &.active {
       margin-top: 20px;
     }
