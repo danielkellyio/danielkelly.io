@@ -1,12 +1,23 @@
 <template>
   <div>
     <dk-header />
-    <Nuxt />
+    <transition name="home">
+      <Nuxt />
+    </transition>
     <Dialog />
   </div>
 </template>
 
 <style>
+.home-enter-active,
+.home-leave-active {
+  transition: all 0.7s;
+}
+.home-enter,
+.home-leave-active {
+  filter: grayscale(0.2) blur(5px);
+  opacity: 0;
+}
 :root {
   --blue: #0d73e0;
   --pink: #ff2bd4;

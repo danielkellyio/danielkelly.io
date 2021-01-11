@@ -1,11 +1,21 @@
 <template>
-  <div class="h-full overflow-y-hidden overflow-x-hidden">
+  <div class="h-full overflow-y-hidden">
     <div class="home-wrapper flex">
+      <video
+        ref="video"
+        class="object-cover"
+        src="https://videos.danielkelly.io/dkio-video-bg.mp4"
+        autoplay
+        muted
+        playsinline
+        :class="{ 'opacity-0': videoHidden }"
+      ></video>
       <div class="relative z-10">
         <h1
           class="unique relative"
           :class="{
             active: h1Active,
+            dark: h1Dark,
             'with-feature': featureActive,
           }"
         >
@@ -44,16 +54,32 @@
 </template>
 
 <script>
+const wait = (callback, timeout) => setTimeout(callback, timeout)
 export default {
   data() {
     return {
-      h1Active: true,
-      h2Active: true,
-      brandsActive: true,
-      featureActive: true,
+      h1Active: false,
+      h1Dark: false,
+      h2Active: false,
+      brandsActive: false,
+      videoHidden: false,
+      featureActive: false,
       h1: 'Daniel Kelly',
       h2: 'dad, dev, dabbler',
     }
+  },
+  mounted() {
+    const video = this.$refs.video
+    video.playbackRate = 2.0
+    video.addEventListener('loadstart', () => {
+      wait(() => (video.playbackRate = 2.5), 1500)
+      wait(() => (this.h1Active = true), 2500)
+      wait(() => (this.h1Dark = true), 4500)
+      wait(() => (this.brandsActive = true), 4500)
+      wait(() => (this.h2Active = true), 5000)
+      wait(() => (this.videoHidden = true), 4000)
+      wait(() => (this.featureActive = true), 5000)
+    })
   },
 }
 </script>
@@ -72,53 +98,28 @@ html {
     max-width: 900px;
   }
 }
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+video {
+  position: absolute;
+  top: 0;
+  left: -25%;
+  right: 0;
+  bottom: 0;
+  min-height: 100vh;
+  transition: 2s ease all;
 }
-
-@keyframes fadeInDownCenteredX {
-  from {
-    opacity: 0;
-    transform: translateY(-40px) translateX(-50%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
-  }
+h1,
+h2 {
+  transition: 3s ease all;
+  opacity: 0.5;
+  color: white;
+  border: none !important;
 }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+h2 {
+  transition: 2s ease color, background;
 }
-.feature {
-  animation: fadeInDown 1s ease;
-}
-h2,
-.brands {
-  animation: fadeInUp 1.4s ease;
-}
-
 h1 {
   font-size: 8rem;
   font-weight: 900;
-  color: #555;
-  opacity: 1;
-  text-shadow: 0 0 20px white, 1px 1px 5px white, -1px -1px 5px white;
   span {
     mix-blend-mode: hard-light;
   }
@@ -128,22 +129,30 @@ h2 {
   font-weight: 300;
   color: white;
 }
+h1.active,
+h2.active {
+  opacity: 1;
+  text-shadow: 0 0 20px white, 1px 1px 5px white, -1px -1px 5px white;
+}
+h1.dark,
+h2.active {
+  color: #555;
+  //color: #424242;
+}
 
 h2.active {
+  opacity: 0.8;
   color: var(--pink);
-
-  margin-bottom: 20px;
+  transform: translateY(-1.5rem);
   background: white;
   padding: 5px 30px;
   border-radius: 35px;
   line-height: 1;
   display: inline-block;
-  @media (min-width: 1031px) {
-    margin-top: -20px;
-  }
 }
 
 .heading-copy {
+  transition: 4s ease all;
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -162,6 +171,12 @@ h2.active {
 .heading-copy h1.active,
 .heading-copy h2.active {
   color: white;
+}
+
+@media (max-width: 1600px) {
+  video {
+    min-width: 100vw;
+  }
 }
 
 @media (max-width: 1032px) {
@@ -183,6 +198,13 @@ h2.active {
     margin-top: 20px;
     font-size: 2rem;
   }
+  /*video {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 100vh;
+  } */
 }
 
 @media (max-width: 401px) {
@@ -200,6 +222,7 @@ h2.active {
   }
 }
 .brands {
+  overflow: hidden;
   will-change: auto;
   transition: 2s ease height;
   height: 0;
@@ -226,7 +249,6 @@ h2.active {
     top: -220px;
     left: 50%;
     height: 200px;
-    animation: fadeInDownCenteredX 1s ease;
     transform: translateX(-50%);
     &.active {
       top: -20px;

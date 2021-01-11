@@ -1,23 +1,25 @@
 <template>
   <div>
     <div
-      class="flex items-center bg-gray-200 p-4 fixed bottom-0 w-full z-10 opacity-75 justify-center sm:justify-between flex-col sm:flex-row"
+      class="flex items-center bg-gray-200 p-4 fixed bottom-0 w-full z-20 opacity-75 justify-center sm:justify-between flex-col sm:flex-row"
     >
       <div class="left hidden sm:block" style="font-size: 1.5rem">
-        <img
-          class="mr-2 inline"
-          width="40px"
-          height="40px"
-          src="/logo.png"
-          alt="danielkelly.io"
-        />danielkelly.io
+        <router-link to="/">
+          <img
+            class="mr-2 inline"
+            width="40px"
+            height="40px"
+            src="/logo.png"
+            alt="danielkelly.io"
+          />danielkelly.io
+        </router-link>
       </div>
       <nav class="right">
         <ul class="flex">
-          <li class="sm:hidden">
+          <li class="sm:hidden w-12">
             <router-link to="/">
               <img
-                class="inline mr-2"
+                class="inline"
                 width="40px"
                 height="40px"
                 src="/logo.png"
@@ -29,7 +31,7 @@
             <component
               :is="link.attrs.to ? 'router-link' : 'a'"
               v-bind="link.attrs"
-              class="p-3 nav-item"
+              class="p-3 nav-item whitespace-no-wrap"
               @click="link.click ? link.click() : null"
             >
               <font-awesome-icon v-if="link.icon" :icon="link.icon" size="lg" />
@@ -55,13 +57,6 @@ export default {
     return {
       searchActive: false,
       links: [
-        {
-          icon: ['fas', 'home'],
-          attrs: {
-            to: '/',
-            class: 'hidden sm:inline',
-          },
-        },
         {
           icon: ['fab', 'github'],
           attrs: {
