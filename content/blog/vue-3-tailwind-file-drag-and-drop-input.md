@@ -11,7 +11,7 @@ tags:
 
 ## What We're Making
 
-[Jump to Demo](#demo)
+[Jump to Demo](#demo-widget)
 
 Maybe you're like me and haven't really gotten a chance to try out the new Composition API in Vue. Well, we're both in luck as this little blog post has given us both that chance! Today we'll utilize the Composition API (along with Tailwind CSS) to build a file drag and drop input.
 
@@ -177,11 +177,8 @@ return { files, uploadInfo, handleUpload }
 
 Finally, in order for our data, computed prop, and method to be available to the template we have to return them from the setup function. This is easily done using ES6 object property value shorthand.
 
-## Demo
-And that's it, we've got ourself a nicely styled and functional drag and drop file input.
-
-<demo-widget slug="file-drag-and-drop"></demo-widget>
-
 ## Conclusion
 
 With a background in Vue 2's object API it isn't that big of a leap to understand the new Vue 3 composition API. Using the Composition API along with Tailwind CSS makes it trivial to implement a stylish drag and drop file input.
+
+<demo-widget slug="file-drag-and-drop"></demo-widget>

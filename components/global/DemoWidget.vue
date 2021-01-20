@@ -1,5 +1,5 @@
 <template>
-  <div class="border-2 rounded py-4">
+  <div id="demo-widget" class="border-2 rounded py-4">
     <!-- Demo Widget Header -->
     <div class="flex justify-between align-middle px-4 md:px-8">
       <strong class="text-lg">Demo</strong>
