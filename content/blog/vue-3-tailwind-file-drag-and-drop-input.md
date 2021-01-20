@@ -156,13 +156,13 @@ const uploadInfo = computed(() => {
 })
 ```
 
-The next piece of code uses the `computed()` function to create a computed property. This compares one-to-one with the `computed` property in the Object API. The function simply takes a callback function that's run to determine the value of the computed property. Just like the Object API, it keeps track of it's dependencies and automatically updates accordingly. For the drag and drop input, it's computing the filename output. If the user only drags in 1 file it will show the file name. If the user drags in more than 1, it will show a message about how many files were provided.
+The next piece of code uses the `computed()` function to create a computed property. This compares one-to-one with the `computed` property in the Object API. The function simply takes a callback function that's run to determine the value of the computed property. Just like the Object API, it keeps track of it's dependencies and automatically updates accordingly. For the drag and drop input, it's computing the filename output. If the user only drags in 1 file in, it will show the file name. If the user drags in more than 1 (when multiple is set), it will show a message about how many files were provided.
 
 ## A method
 
 ```javascript
 const handleUpload = (e) => {
-  y
+  files.value = Array.from(e.target.files) || []
   emit('input', files)
 }
 ```
@@ -178,9 +178,10 @@ return { files, uploadInfo, handleUpload }
 Finally, in order for our data, computed prop, and method to be available to the template we have to return them from the setup function. This is easily done using ES6 object property value shorthand.
 
 ## Demo
+And that's it, we've got ourself a nicely styled and functional drag and drop file input.
 
 <demo-widget slug="file-drag-and-drop"></demo-widget>
 
 ## Conclusion
 
-With a background in Vue 2's object API it isn't that big of a leap to understanding the new Vue 3 composition API. Using the Composition API along with Tailwind CSS makes it trivial to implement a stylish drag and drop file input.
+With a background in Vue 2's object API it isn't that big of a leap to understand the new Vue 3 composition API. Using the Composition API along with Tailwind CSS makes it trivial to implement a stylish drag and drop file input.

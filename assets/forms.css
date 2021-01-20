@@ -1,3 +1,10 @@
-input{
-  @apply p-2
+input:not([type='checkbox'], [type='radio']),
+select {
+  @apply p-2 border-2 border-gray-200 rounded w-full;
+}
+
+select {
+  appearance: none;
+  background: url('/select-triangle.png') right 10px center no-repeat;
+  background-size: 10px 10px;
 }
