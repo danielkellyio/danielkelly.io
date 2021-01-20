@@ -1,6 +1,26 @@
-.nuxt-content img{
+.nuxt-content img {
   @apply border-4 border-gray-200;
 }
-.prose{
-  font-size:1.1rem;
+.prose {
+  font-size: 1.1rem;
+}
+
+.prose pre code::after {
+  display: none;
+}
+
+.prose p > code,
+.prose strong > code {
+  &::after,
+  &::before {
+    color: var(--pink);
+  }
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  background: transparent !important;
 }
