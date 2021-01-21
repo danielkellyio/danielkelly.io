@@ -31,9 +31,10 @@ We're going to build our component so that it can be used like so:
 
 ## The Template and Styles
 
+In order to make our code as simple and fool-proof as possible we will be utilizing the default behavior of the html file input and just doing a little style trickery to make it look like a drop-zone.
+
 ```vue
 <template>
-  <!-- We wrap the whole thing in a label so that the whole area can be clickable -->
   <label :for="id" class="block h-64 relative overflow-hidden rounded">
     <!-- 
     * The input has an "overlayed" class which we define using @apply in the style block below
@@ -48,11 +49,13 @@ We're going to build our component so that it can be used like so:
       @change="handleUpload"
     />
     <!-- This is where we do the fancy styling with Tailwind CSS and transform this thing from a normal file input to a nicely styled drag and drop dropzone-->
+
+    <!-- The pointer-events-none class here is very important as it allows our drags and clicks to pass through to the input underneath -->
     <span
       :class="`overlayed bg-${color}-100 border-${color}-200 border-2 text-${color}-800 pointer-events-none flex justify-center items-center`"
     >
       <div class="text-center">
-        <!-- Let's use a slot here to make our component a little more flexible (maybe end developer would live to add an icon in there, etc) -->
+        <!-- Let's use a slot here to make our component a little more flexible (maybe the end developer would live to add an icon in there, etc) -->
         <slot>
           <strong>Upload File</strong>
         </slot>
