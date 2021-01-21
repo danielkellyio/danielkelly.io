@@ -1,6 +1,6 @@
 <template>
-  <div class="flex gap-2">
-    <div class="sm:w-1/4">
+  <div class="flex gap-2 flex-wrap">
+    <div class="w-full md:w-1/5 flex-grow">
       <label class="block">
         <strong>Color</strong>
         <select v-model="color" class="block">
@@ -25,7 +25,7 @@
         </div>
       </label>
     </div>
-    <div class="sm:w-3/4">
+    <div class="w-full md:w-3/4">
       <FileDragAndDrop :color="color" :multiple="multiple" />
     </div>
   </div>
