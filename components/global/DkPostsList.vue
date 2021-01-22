@@ -1,15 +1,22 @@
 <template>
-  <ul class="sm:flex lg:block gap-2">
-    <li v-for="post in posts" :key="post.slug" class="my-5 shadow">
+  <ul class="flex col-gap-2 flex-wrap">
+    <li
+      v-for="post in posts"
+      :key="post.slug"
+      class="my-5 shadow md:w-1/3 lg:w-full flex-grow"
+    >
       <nuxt-link
         :to="`/blog/${post.slug}`"
         class="lg:flex justify-between block"
       >
-        <img
-          class="w-full order-2"
-          :src="`/${post.slug}.jpg`"
+        <dk-image
+          :src="post.slug"
+          loading="lazy"
           :alt="post.title"
+          class="w-full order-2 block"
+          sizes="(max-width: 1024px) 90vw, 200px"
         />
+
         <div class="p-5">
           <div class="text-lg">{{ post.title }}</div>
           <small class="italic"> - {{ prettyDate(post.publishDate) }} </small>
@@ -20,8 +27,10 @@
 </template>
 <script>
 import { prettyDate } from '@/helper'
+import DkImage from './DkImage.vue'
 
 export default {
+  components: { DkImage },
   props: {
     posts: { type: Array, required: true },
   },

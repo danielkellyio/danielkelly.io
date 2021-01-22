@@ -5,13 +5,15 @@
     >
       <div class="left hidden sm:block" style="font-size: 1.5rem">
         <router-link to="/">
-          <img
+          <dk-image
             class="mr-2 inline"
             width="40px"
             height="40px"
-            src="/logo.png"
+            src="/logo"
             alt="danielkelly.io"
-          />danielkelly.io
+            sizes="40px"
+          />
+          danielkelly.io
         </router-link>
       </div>
       <nav class="right">

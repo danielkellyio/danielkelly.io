@@ -19,9 +19,9 @@
     >
       <nuxt-link class="flex items-center block" :to="`/blog/${nextPost.slug}`">
         <div class="p-4 text-gray-500">Next</div>
-        <img
-          :src="`/${nextPost.slug}.jpg`"
-          width="175px"
+        <dk-image
+          :src="`/${nextPost.slug}`"
+          sizes="175px"
           :alt="nextPost.title"
         />
       </nuxt-link>
