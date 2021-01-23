@@ -9,15 +9,17 @@
             'with-feature': featureActive,
           }"
         >
-          <img
+          <dk-image
             class="feature absolute lg:hidden"
-            src="/ink-2.jpg"
+            src="/ink-2"
             :class="{ active: featureActive }"
           />
-          <img
+
+          <dk-image
             class="feature absolute hidden lg:block"
-            src="/ink-2-desktop.jpg"
+            src="/ink-2-desktop"
             :class="{ active: featureActive }"
+            sizes="50vw"
           />
           <span class="z-10 inline-block">
             {{ h1 }}

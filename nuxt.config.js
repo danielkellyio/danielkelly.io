@@ -1,4 +1,5 @@
 import feed from './support/feed'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -50,6 +51,8 @@ export default {
     '@nuxt/content',
     // https://github.com/nuxt-community/feed-module
     '@nuxtjs/feed',
+    // https://cloudinary.nuxtjs.org/
+    '@nuxtjs/cloudinary',
   ],
 
   publicRuntimeConfig: {
@@ -105,4 +108,5 @@ export default {
       },
     ],
   },
+  cloudinary: require('./config/cloudinary.private'),
 }

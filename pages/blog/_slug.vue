@@ -25,11 +25,11 @@
         <dk-social-share :url="absoluteUrl" class="justify-center" />
       </div>
       <div class="feature-image-wrapper">
-        <img
-          class="feature-image mb-10 border-2 border-gray-100 shadow-lg block"
-          :src="`/${post.slug}.jpg`"
+        <dk-image
+          :src="post.slug"
           :alt="post.title"
           height="446px"
+          class="feature-image mb-10 border-2 border-gray-100 shadow-lg block"
         />
       </div>
     </div>
