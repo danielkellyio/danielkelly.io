@@ -136,7 +136,7 @@ h2.active {
 
   margin-bottom: 20px;
   background: white;
-  padding: 5px 30px;
+  padding: 10px 30px;
   border-radius: 35px;
   line-height: 1;
   display: inline-block;
