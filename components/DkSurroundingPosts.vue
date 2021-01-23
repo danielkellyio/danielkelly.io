@@ -94,3 +94,9 @@ export default {
   }
 }
 </style>
+<style>
+.page-enter-active .surrounding-posts,
+.page-leave-active .surrounding-posts {
+  display: none;
+}
+</style>

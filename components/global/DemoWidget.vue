@@ -23,7 +23,9 @@
 
     <!-- Demo Widget Content -->
     <div class="px-4 md:px-8">
-      <component :is="BlogPostExample" :mode="mode"></component>
+      <LazyHydrate when-visible>
+        <component :is="BlogPostExample" :mode="mode"></component>
+      </LazyHydrate>
     </div>
   </div>
 </template>

@@ -26,6 +26,9 @@
 
 <script>
 export default {
+  components: {
+    ShareTrigger: () => import('./ShareTrigger'),
+  },
   props: {
     url: { type: String, required: true },
   },

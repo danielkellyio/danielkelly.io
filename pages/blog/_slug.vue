@@ -13,16 +13,20 @@
             >
           </div>
         </div>
-        <dk-tags
-          class="mt-4 justify-center md:justify-start"
-          :tags="post.tags"
-        />
+        <LazyHydrate never>
+          <dk-tags
+            class="mt-4 justify-center md:justify-start"
+            :tags="post.tags"
+          />
+        </LazyHydrate>
       </h5>
     </div>
 
     <div class="relative">
       <div class="sm:absolute" style="bottom: 100%; right: 2px">
-        <dk-social-share :url="absoluteUrl" class="justify-center" />
+        <LazyHydrate when-idle>
+          <dk-social-share :url="absoluteUrl" class="justify-center" />
+        </LazyHydrate>
       </div>
       <div class="feature-image-wrapper">
         <dk-image
@@ -35,20 +39,28 @@
     </div>
 
     <nuxt-content :document="post" class="prose" />
-    <dk-discuss-on-twitter :url="absoluteUrl" />
-    <dk-related-posts :post="post" :url="absoluteUrl" />
+    <LazyHydrate never>
+      <dk-discuss-on-twitter :url="absoluteUrl" />
+    </LazyHydrate>
+    <LazyHydrate when-visible>
+      <dk-related-posts :post="post" :url="absoluteUrl" />
+    </LazyHydrate>
     <dk-newsletter class="mt-10" />
-    <dk-surrounding-posts :current-post="post" />
+    <LazyHydrate when-idle>
+      <dk-surrounding-posts :current-post="post" />
+    </LazyHydrate>
   </div>
 </template>
 <script>
 import { prettyDate } from '~/helper'
-import DkRelatedPosts from '~/components/DkRelatedPosts'
-import DkSurroundingPosts from '~/components/DkSurroundingPosts'
+
 export default {
+  scrollToTop: true,
   components: {
-    DkRelatedPosts,
-    DkSurroundingPosts,
+    DkRelatedPosts: () => import('~/components/DkRelatedPosts'),
+    DkSurroundingPosts: () => import('~/components/DkSurroundingPosts'),
+    DkTags: () => import('~/components/DkTags'),
+    DkSocialShare: () => import('~/components/DkSocialShare'),
   },
   async asyncData({ $content, route }) {
     const slug = route.params.slug
