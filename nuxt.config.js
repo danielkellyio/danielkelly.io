@@ -1,5 +1,5 @@
 import feed from './support/feed'
-import cloudinary from './config/cloudinary.private'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -108,5 +108,5 @@ export default {
       },
     ],
   },
-  cloudinary,
+  cloudinary: require('./config/cloudinary.private'),
 }

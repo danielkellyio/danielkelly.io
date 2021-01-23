@@ -1,10 +1,7 @@
-import fs from 'fs'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import cloudinary from 'cloudinary'
-import config from '../config/cloudinary.private.mjs'
+const fs = require('fs')
+const cloudinary = require('cloudinary')
+const config = require('../config/cloudinary.private')
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
 const staticDir = `${__dirname}/../static`
 
 cloudinary.config({

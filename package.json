@@ -9,7 +9,7 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
-    "syncCloudinary": "node scripts/syncImagesToCloudinary.mjs"
+    "syncCloudinary": "node scripts/syncImagesToCloudinary.js"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
