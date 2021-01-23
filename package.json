@@ -37,6 +37,7 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "nuxt-content-algolia": "^0.1.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "vue-lazy-hydration": "^2.0.0-beta.4"
   }
 }
