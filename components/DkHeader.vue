@@ -20,12 +20,13 @@
         <ul class="flex">
           <li class="sm:hidden w-12">
             <router-link to="/">
-              <img
-                class="inline"
+              <dk-image
+                class="mr-2 inline"
                 width="40px"
                 height="40px"
-                src="/logo.png"
+                src="/logo"
                 alt="danielkelly.io"
+                sizes="40px"
               />
             </router-link>
           </li>
