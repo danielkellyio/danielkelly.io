@@ -65,15 +65,20 @@
                           class="inline-flex gap-5 items-center"
                           @click="$emit('close')"
                         >
-                          <img
-                            :src="`/${hit.objectID}.jpg`"
+                          <dk-image
+                            :src="hit.objectID"
+                            loading="lazy"
                             :alt="hit.title"
-                            class="w-1/4"
+                            class="hidden md:block 1/4"
+                            sizes="200px"
                           />
                           <div>
-                            <ais-highlight attribute="title" :hit="hit" />
+                            <div class="border-gray-200 border-b-2">
+                              <ais-highlight attribute="title" :hit="hit" />
+                            </div>
+
                             <div
-                              class="text-gray-500"
+                              class="hidden md:block mt-2 text-gray-500"
                               style="font-size: 0.6rem"
                             >
                               <ais-highlight
@@ -137,9 +142,7 @@ export default {
 
 <style>
 .ais-Highlight-highlighted {
-  background: var(--pink);
-  color: white;
-  @apply px-1;
+  @apply px-1 bg-blue-100 text-white;
 }
 .search-inner {
   transition: all 0.5s ease;
