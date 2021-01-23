@@ -5,10 +5,11 @@
       class="prev-post surrounding-post fixed z-10 shadow-md"
     >
       <nuxt-link class="flex items-center block" :to="`/blog/${prevPost.slug}`">
-        <img
+        <dk-image
           :src="`/${prevPost.slug}.jpg`"
           width="175px"
           :alt="prevPost.title"
+          sizes="175px"
         />
         <div class="p-4 text-gray-500">Previous</div>
       </nuxt-link>
@@ -21,6 +22,7 @@
         <div class="p-4 text-gray-500">Next</div>
         <dk-image
           :src="`/${nextPost.slug}`"
+          width="175px"
           sizes="175px"
           :alt="nextPost.title"
         />
