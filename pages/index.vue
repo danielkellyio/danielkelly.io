@@ -1,9 +1,11 @@
 <template>
   <div
-    class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-x-hidden overflow-y-hidden"
+    ref="wrapper"
+    class="wrapper absolute opacity-0 top-0 left-0 right-0 bottom-0 flex items-center justify-center overflow-x-hidden overflow-y-hidden"
   >
     <div class="p-5 relative z-10 text-center">
       <img
+        ref="headshot"
         src="/headshot.png"
         alt="daniel kelly headshot"
         class="inline-block"
@@ -23,7 +25,6 @@
       ref="video"
       class="object-cover"
       src="https://res.cloudinary.com/djuxgknjk/video/upload/v1628941692/dkio-video-bg_x9t6dy.mp4"
-      autoplay
       muted
       playsinline
     ></video>
@@ -39,11 +40,16 @@ export default {
   mounted() {
     const video = this.$refs.video
     video.playbackRate = 2.0
+    video.play()
     video.addEventListener('loadstart', () => {
       // wait(() => (video.playbackRate = 1.5), 2500)
       wait(() => (video.playbackRate = 1), 2700)
       // wait(() => (video.playbackRate = 0.5), 2900)
       wait(() => video.pause(), 3600)
+    })
+
+    this.$refs.headshot.addEventListener('load', () => {
+      this.$refs.wrapper.classList.remove('opacity-0')
     })
   },
 }
@@ -58,7 +64,9 @@ video {
   min-height: 100vh;
   width: 100%;
 }
-
+.wrapper {
+  transition: 0.5s ease opacity;
+}
 h1 {
   font-size: 8rem;
   font-weight: 900;
