@@ -40,17 +40,28 @@ export default {
   mounted() {
     const video = this.$refs.video
     video.playbackRate = 2.0
-    video.play()
+    if (!this.videoIsPlaying(video)) {
+      video.play()
+    }
+
     video.addEventListener('loadstart', () => {
-      // wait(() => (video.playbackRate = 1.5), 2500)
       wait(() => (video.playbackRate = 1), 2700)
-      // wait(() => (video.playbackRate = 0.5), 2900)
       wait(() => video.pause(), 3600)
     })
 
     this.$refs.headshot.addEventListener('load', () => {
       this.$refs.wrapper.classList.remove('opacity-0')
     })
+  },
+  methods: {
+    videoIsPlaying(video) {
+      return !!(
+        video.currentTime > 0 &&
+        !video.paused &&
+        !video.ended &&
+        video.readyState > 2
+      )
+    },
   },
 }
 </script>
