@@ -39,7 +39,10 @@ export default {
   },
   mounted() {
     const video = this.$refs.video
-    video.playbackRate = 1.5
+    if (window.innerWidth > 769) {
+      video.playbackRate = 1.5
+    }
+
     if (!this.videoIsPlaying(video)) {
       video.play()
     }
@@ -52,7 +55,6 @@ export default {
           !playbackRateAdjusted &&
           window.innerWidth > 769
         ) {
-          console.log('slowing down')
           video.playbackRate = 1
           playbackRateAdjusted = true
         }
