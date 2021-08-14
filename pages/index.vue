@@ -1,234 +1,91 @@
 <template>
-  <div class="h-full overflow-y-hidden overflow-x-hidden">
-    <div class="home-wrapper flex">
-      <div class="relative z-10">
-        <h1
-          class="unique relative"
-          :class="{
-            active: h1Active,
-            'with-feature': featureActive,
-          }"
-        >
-          <dk-image
-            class="feature absolute lg:hidden"
-            src="/ink-2"
-            :class="{ active: featureActive }"
-          />
-
-          <dk-image
-            class="feature absolute hidden lg:block"
-            src="/ink-2-desktop"
-            :class="{ active: featureActive }"
-            sizes="50vw"
-          />
-          <span class="z-10 inline-block">
-            {{ h1 }}
-          </span>
-        </h1>
-        <h2 :class="{ active: h2Active }">{{ h2 }}</h2>
-        <div class="heading-copy">
-          <h1 :class="{ active: h1Active }">{{ h1 }}</h1>
-          <h2 :class="{ active: h2Active }">{{ h2 }}</h2>
-        </div>
-        <div
-          class="brands flex"
-          :class="{ active: brandsActive }"
-          style="font-size: 4rem"
-        >
-          <brand-icon brand="vue" />
-          <brand-icon brand="laravel" />
-          <brand-icon brand="nuxt" />
-          <brand-icon brand="git" />
-        </div>
+  <div
+    class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center"
+  >
+    <div class="p-5 relative z-10 text-center">
+      <img
+        src="/headshot.png"
+        alt="daniel kelly headshot"
+        class="inline-block"
+        width="250"
+        style="margin-top: -100px"
+      />
+      <h1 class="unique relative active with-feature">
+        <span class="z-10 inline-block">Daniel Kelly</span>
+      </h1>
+      <div class="links">
+        <a href="https://twitter.com/danielkelly_io">Twitter</a> |
+        <a href="https://github.com/danielkellyio">Github</a> |
+        <a href="/blog">Blog</a>
       </div>
     </div>
+    <video
+      ref="video"
+      class="object-cover"
+      src="https://res.cloudinary.com/djuxgknjk/video/upload/v1628941692/dkio-video-bg_x9t6dy.mp4"
+      autoplay
+      muted
+      playsinline
+      :class="{ 'opacity-0': videoHidden }"
+    ></video>
   </div>
 </template>
 
 <script>
+const wait = (callback, timeout) => setTimeout(callback, timeout)
 export default {
   data() {
-    return {
-      h1Active: true,
-      h2Active: true,
-      brandsActive: true,
-      featureActive: true,
-      h1: 'Daniel Kelly',
-      h2: 'dad, dev, dabbler',
-    }
+    return {}
+  },
+  mounted() {
+    const video = this.$refs.video
+    video.playbackRate = 2.0
+    video.addEventListener('loadstart', () => {
+      // wait(() => (video.playbackRate = 1.5), 2500)
+      wait(() => (video.playbackRate = 1), 2700)
+      // wait(() => (video.playbackRate = 0.5), 2900)
+      wait(() => video.pause(), 3600)
+    })
   },
 }
 </script>
-
 <style scoped>
-html {
-  overflow: hidden;
-}
-
-.home-wrapper {
-  margin: 0 auto;
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   min-height: 100vh;
-  align-items: center;
-  max-width: 1280px;
-  @media (max-width: 1280px) {
-    max-width: 900px;
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDownCenteredX {
-  from {
-    opacity: 0;
-    transform: translateY(-40px) translateX(-50%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.feature {
-  animation: fadeInDown 1s ease;
-}
-h2,
-.brands {
-  animation: fadeInUp 1.4s ease;
+  width: 100%;
 }
 
 h1 {
   font-size: 8rem;
   font-weight: 900;
-  color: #555;
+  color: #0a4078;
   opacity: 1;
   text-shadow: 0 0 20px white, 1px 1px 5px white, -1px -1px 5px white;
-}
-h1 span {
   mix-blend-mode: hard-light;
-}
-h2 {
-  font-size: 3rem;
-  font-weight: 300;
-  color: white;
-}
-
-h2.active {
-  color: var(--pink);
-
-  margin-bottom: 20px;
-  background: white;
-  padding: 10px 30px;
-  border-radius: 35px;
   line-height: 1;
-  display: inline-block;
+  margin: 10px 0;
 }
-@media (min-width: 1031px) {
-  h2 {
-    margin-top: -20px;
-  }
-}
-
-.heading-copy {
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) scale(1.1);
-  z-index: -1;
-  filter: blur(0);
-}
-.active .heading-copy {
-  opacity: 1;
-  filter: blur(8px);
-}
-.heading-copy h1,
-.heading-copy h2 {
-  color: #a5ddff;
-}
-.heading-copy h1.active,
-.heading-copy h2.active {
-  color: white;
-}
-
-@media (max-width: 1032px) {
-  .home-wrapper {
-    justify-content: center;
-    text-align: center;
-  }
+@media (max-width: 800px) {
   h1 {
-    font-size: 4rem;
-    line-height: 1;
-  }
-  h1.with-feature {
-    padding-top: 200px;
-  }
-  h1 span {
-    mix-blend-mode: unset !important;
-  }
-  h2 {
-    margin-top: 20px;
-    font-size: 2rem;
+    font-size: 5rem;
   }
 }
-
-@media (max-width: 401px) {
+@media (max-width: 600px) {
   h1 {
     font-size: 3rem;
-    padding: 10px;
-  }
-  h2 {
-    margin-top: 0;
-    padding: 10px;
-  }
-  h2.active {
-    margin-top: 20px;
   }
 }
-.brands {
-  will-change: auto;
-  transition: 2s ease height;
-  height: 200px;
-}
-@media (max-width: 1032px) {
-  .brands {
-    justify-content: center;
-  }
-}
-.feature {
-  transition: 2s ease;
-  height: 700px;
-  z-index: -1;
-  left: -120px;
-  top: -200px;
-  max-width: none;
-}
-@media (max-width: 1032px) {
-  .feature {
-    transition: 1s ease;
-    left: 50%;
-    height: 200px;
-    animation: fadeInDownCenteredX 1s ease;
-    transform: translateX(-50%);
-    top: -20px;
-    opacity: 1;
-  }
+.links {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 10px white, 1px 1px 1px white, -1px -1px 5px white;
 }
 </style>

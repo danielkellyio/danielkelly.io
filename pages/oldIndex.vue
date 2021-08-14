@@ -1,6 +1,6 @@
 <template>
   <div class="h-full overflow-y-hidden">
-    <div class="home-wrapper flex">
+    <div>
       <video
         ref="video"
         class="object-cover"
