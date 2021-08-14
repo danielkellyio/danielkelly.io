@@ -47,8 +47,12 @@ export default {
     let playbackRateAdjusted = false
     video.addEventListener('loadstart', () => {
       const interval = setInterval(() => {
-        console.log(video.currentTime)
-        if (video.currentTime > 2.7 && !playbackRateAdjusted) {
+        if (
+          video.currentTime > 2.7 &&
+          !playbackRateAdjusted &&
+          window.innerWidth > 769
+        ) {
+          console.log('slowing down')
           video.playbackRate = 1
           playbackRateAdjusted = true
         }
