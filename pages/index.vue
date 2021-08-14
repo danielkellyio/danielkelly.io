@@ -26,7 +26,6 @@
       autoplay
       muted
       playsinline
-      :class="{ 'opacity-0': videoHidden }"
     ></video>
   </div>
 </template>
