@@ -32,21 +32,33 @@
 </template>
 
 <script>
-const wait = (callback, timeout) => setTimeout(callback, timeout)
+// const wait = (callback, timeout) => setTimeout(callback, timeout)
 export default {
   data() {
     return {}
   },
   mounted() {
     const video = this.$refs.video
-    video.playbackRate = 2.0
+    video.playbackRate = 1.5
     if (!this.videoIsPlaying(video)) {
       video.play()
     }
 
+    let playbackRateAdjusted = false
     video.addEventListener('loadstart', () => {
-      wait(() => (video.playbackRate = 1), 2700)
-      wait(() => video.pause(), 3600)
+      const interval = setInterval(() => {
+        console.log(video.currentTime)
+        if (video.currentTime > 2.7 && !playbackRateAdjusted) {
+          video.playbackRate = 1
+          playbackRateAdjusted = true
+        }
+        if (video.currentTime > 5.6) {
+          video.pause()
+          clearInterval(interval)
+        }
+      }, 1)
+      // wait(() => (video.playbackRate = 1), 2700)
+      // wait(() => video.pause(), 3600)
     })
 
     this.$refs.headshot.addEventListener('load', () => {
