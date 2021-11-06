@@ -134,8 +134,9 @@ export default {
 </style>
 <style scoped>
 .menu-full-screen {
-  @apply fixed top-0 right-0 left-0 bottom-0 bg-white 
+  @apply fixed right-0 left-0 bottom-0 bg-white 
     flex justify-center items-center flex-col;
+  top: -65px;
   z-index: 19;
   li {
     @apply mb-2;

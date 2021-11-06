@@ -5,14 +5,18 @@
       <li
         v-for="talk in talks"
         :key="talk.slug"
-        class="my-5 shadow md:w-1/3 lg:w-full flex-grow"
+        class="my-5 shadow md:w-1/3 lg:w-full flex-grow relative"
       >
+        <a
+          :href="talk.link"
+          class="md:hidden absolute top-0 left-0 bottom-0 right-0"
+        ></a>
         <a
           :href="talk.link"
           class="lg:flex justify-between block items-center"
           @click.prevent="openVideo(talk)"
         >
-          <div class="w-56 order-2 pointer-events-none">
+          <div class="lg:w-56 w-full order-2 pointer-events-none">
             <div class="embed-container">
               <iframe
                 :src="talk.embed"
@@ -44,7 +48,7 @@ export default {
   methods: {
     openVideo(talk) {
       dialog.html().okText('close')
-        .alert(`<div style="width: 800px;"><div class="embed-container">
+        .alert(`<div class="video-container"><div class="embed-container">
               <iframe
                 src="${talk.embed}"
                 frameborder="0"
@@ -60,8 +64,14 @@ export default {
 <style>
 .talks-page .dialog-inner {
   top: 50%;
-  transform: translate(-50%, calc(-50% - 75px));
+  transform: translate(-50%, calc(-50% - 65px));
 }
+@media (min-width: 769px) {
+  .video-container {
+    width: 739px;
+  }
+}
+
 .embed-container {
   position: relative;
   padding-bottom: 56.25%;

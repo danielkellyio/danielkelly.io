@@ -14,10 +14,12 @@
           <img
             :src="course.image"
             :alt="`${course.name} feature image`"
-            class="p-4 order-2 block"
-            width="200px"
+            class="p-4 order-2 block lg:w-48 w-full"
             loading="lazy"
-            style="background: linear-gradient(0deg, #4f48ad, #1d185e 71.5%)"
+            style="
+              background: linear-gradient(0deg, #4f48ad, #1d185e 71.5%);
+              aspect-ratio: 1 / 1;
+            "
           />
 
           <div class="p-5">
