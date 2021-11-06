@@ -1,29 +1,33 @@
 <template>
-  <ul class="flex col-gap-2 flex-wrap">
-    <li
-      v-for="post in posts"
-      :key="post.slug"
-      class="my-5 shadow md:w-1/3 lg:w-full flex-grow"
-    >
-      <nuxt-link
-        :to="`/blog/${post.slug}`"
-        class="lg:flex justify-between block"
+  <div>
+    <SnazzyList class="flex col-gap-2 flex-wrap" :delay="300">
+      <li
+        v-for="post in posts"
+        :key="post.slug"
+        class="my-5 shadow md:w-1/3 lg:w-full flex-grow"
       >
-        <dk-image
-          :src="post.slug"
-          loading="lazy"
-          :alt="post.title"
-          class="w-full order-2 block"
-          sizes="(max-width: 1024px) 90vw, 200px"
-        />
+        <nuxt-link
+          :to="`/blog/${post.slug}`"
+          class="lg:flex justify-between block"
+        >
+          <dk-image
+            :src="post.slug"
+            loading="lazy"
+            :alt="post.title"
+            class="w-full order-2 block"
+            sizes="(max-width: 1024px) 90vw, 200px"
+          />
 
-        <div class="p-5">
-          <div class="text-lg">{{ post.title }}</div>
-          <small class="italic"> - {{ prettyDate(post.publishDate) }} </small>
-        </div>
-      </nuxt-link>
-    </li>
-  </ul>
+          <div class="p-5">
+            <div class="text-xl">{{ post.title }}</div>
+            <p class="italic opacity-50">
+              - {{ prettyDate(post.publishDate) }}
+            </p>
+          </div>
+        </nuxt-link>
+      </li>
+    </SnazzyList>
+  </div>
 </template>
 <script>
 import { prettyDate } from '@/helper'

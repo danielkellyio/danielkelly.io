@@ -32,11 +32,7 @@
 </template>
 
 <script>
-// const wait = (callback, timeout) => setTimeout(callback, timeout)
 export default {
-  data() {
-    return {}
-  },
   mounted() {
     const video = this.$refs.video
     if (window.innerWidth > 769) {
@@ -63,8 +59,6 @@ export default {
           clearInterval(interval)
         }
       }, 1)
-      // wait(() => (video.playbackRate = 1), 2700)
-      // wait(() => video.pause(), 3600)
     })
 
     this.$refs.headshot.addEventListener('load', () => {

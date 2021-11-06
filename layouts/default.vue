@@ -1,5 +1,5 @@
 <template>
-  <div :class="$route.path === '/' ? 'home-page' : ''">
+  <div :class="$route.name + '-page'">
     <dk-header />
     <Nuxt />
     <Dialog />
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style>
-.page-enter-active,
+/* .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
 }
@@ -26,5 +26,5 @@ export default {
 .page-leave-active {
   filter: grayscale(0.2) blur(5px);
   opacity: 0;
-}
+} */
 </style>

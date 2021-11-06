@@ -76,7 +76,15 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faNewspaper', 'faHome', 'faSearch', 'faTags'],
+      solid: [
+        'faNewspaper',
+        'faHome',
+        'faSearch',
+        'faTags',
+        'faBars',
+        'faComment',
+        'faChalkboardTeacher',
+      ],
       brands: ['faGithub', 'faTwitter', 'faFacebookF', 'faLinkedinIn'],
     },
   },
