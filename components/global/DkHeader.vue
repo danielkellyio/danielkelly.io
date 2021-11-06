@@ -17,7 +17,11 @@
         </router-link>
       </div>
       <nav class="right">
-        <div class="hamburger" @click="menuOpen = !menuOpen">
+        <div
+          class="hamburger"
+          style="font-size: 2rem"
+          @click="menuOpen = !menuOpen"
+        >
           <font-awesome-icon :icon="['fas', 'bars']"></font-awesome-icon>
         </div>
       </nav>
@@ -141,9 +145,6 @@ export default {
   li {
     @apply mb-2;
   }
-}
-.hamburger {
-  font-size: 2rem;
 }
 li svg {
   font-size: 1.5rem;
